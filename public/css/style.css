@@ -7,6 +7,7 @@
 
 html {
     font-family: 'Lexend Deca', sans-serif;
+    scroll-behavior: smooth;
 }
 
 .mouse-trail {
@@ -20,6 +21,20 @@ html {
     z-index: 9999;
     transition: transform 0.3s ease-out, opacity 0.2s ease-out;
     transform: translate(-50%, -50%) scale(0);
+}
+
+.link-change {
+    display: none;
+    animation: moveUpC 0.5s ease;
+}
+
+.header-fixed {
+    width: 100%;
+    position: fixed;
+    top: -100px;
+    z-index: 9999;
+    /* transition: all 0.4s linear; */
+    animation: fadeInC 0.8s linear;
 }
 
 .banner,
@@ -228,8 +243,53 @@ header {
 }
   
 .product-item:hover .hover-effect {
-    left: 100%;
+    left: 90%;
     opacity: 1;
+}
+
+.input-group-c {
+    height: 60px;
+    background-color: #E7EFFC;
+}
+
+.input-group-c input {
+    background-color: #E7EFFC;
+    border-radius: 50rem 0 0 50rem;
+    border: none;
+    padding-left: 25px;
+}
+
+.input-group-c input:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #E7EFFC;
+}
+
+.btn-c {
+    height: 80%;
+    margin-right: 5px;
+}
+
+footer {
+    background-color: #061E43;
+}
+
+@keyframes fadeInC {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveUpC {
+    from {
+        transform: translateY(40px);
+    }to {
+        transform: translateY(0);
+    }
 }
 
 @keyframes moveUpDown {

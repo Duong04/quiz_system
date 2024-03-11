@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
     <link rel="stylesheet" href="./node_modules/aos/dist/aos.css">
 </head>
@@ -131,7 +131,7 @@
                 <img class="filter-scale" width="100%" src="./public/images/icon_source/brand07.png" alt="">
             </div>
         </div>
-        <section class="p-0 p-md-5" style="background-color: #F4F7FB;">
+        <section class="px-0 py-5 p-md-5" style="background-color: #F4F7FB;">
             <div class="container-md">
                 <div class="btn-1" style="width: 250px;">
                     Chào mừng bạn đến với các bài Quizz
@@ -504,13 +504,144 @@
                 </div>
             </div>
         </section>
+        <section class="p-5 bg-white">
+            <div class="container d-flex justify-content-between g-15 flex-wrap align-items-center">
+                <div class="col-12 col-lg-5 d-flex align-items-center flex-wrap-reverse g-5">
+                    <img src="./public/images/banner/newsletter.png" class="w-100 w-lg-75" alt="">
+                    <h5 class="fw-bolder fs-4" style="width: 250px;">Hãy tham gia Bản tin của chúng tôi!</h5>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <form class="input-group input-group-c d-flex align-items-center rounded-pill">
+                        <input required type="text" class="form-control" placeholder="Email của bạn" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <button class="btn btn-primary input-group-text btn-c rounded-pill" id="basic-addon2">Đăng ký ngay</button>                 
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <section class="bg-light py-4 py-md-5 py-xl-8 border-top border-light">
+                <div class="container overflow-hidden">
+                    <div class="row gy-4 gy-lg-0 justify-content-xl-between">
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <div class="widget">
+                                <a href="#!">
+                                    <img src="./public/images/logo/logo.png" alt="BootstrapBrain Logo" width="175" height="57">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <div class="widget">
+                                <h4 class="widget-title mb-4">Get in Touch</h4>
+                                <address class="mb-4">8014 Edith Blvd NE, Albuquerque, New York, United States</address>
+                                <p class="mb-1">
+                                    <a class="link-secondary text-decoration-none" href="tel:+15057922430">(505) 792-2430</a>
+                                </p>
+                                <p class="mb-0">
+                                    <a class="link-secondary text-decoration-none" href="mailto:demo@yourdomain.com">demo@yourdomain.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <div class="widget">
+                                <h4 class="widget-title mb-4">Learn More</h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Trang chủ</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Danh mục</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Giới thiệu</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Liên hệ</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Góp ý</a>
+                                    </li>
+                                    <li class="mb-0">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Hỏi đáp</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 col-xl-4">
+                            <div class="widget">
+                                <h4 class="widget-title mb-4">Our Newsletter</h4>
+                                <p class="mb-4">Subscribe to our newsletter to get our news & discounts delivered to you.</p>
+                                <form action="#!">
+                                    <div class="row gy-4">
+                                        <div class="col-12">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="email-newsletter-addon">
+                                                    <i class="bi bi-envelope-at"></i>
+                                                </span>
+                                                <input type="email" class="form-control" id="email-newsletter" value="" placeholder="Email Address" aria-label="email-newsletter" aria-describedby="email-newsletter-addon" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+            <!-- Copyright - Bootstrap Brain Component -->
+            <div class="bg-light py-4 py-md-5 py-xl-8 border-top border-light-subtle">
+              <div class="container overflow-hidden">
+                <div class="row gy-4 gy-md-0">
+                  <div class="col-xs-12 col-md-7 order-1 order-md-0">
+                    <div class="copyright text-center text-md-start">
+                      &copy; 2024 Copyright DevSugar.
+                    </div>
+                    <div class="credits text-secondary text-center text-md-start mt-2 fs-7">
+                      Web Developer with <span class="text-primary">&#9829;</span>
+                    </div>
+                  </div>
+          
+                  <div class="col-xs-12 col-md-5 order-0 order-md-1">
+                    <ul class="nav justify-content-center justify-content-md-end">
+                        <li class="nav-item">
+                            <a class="nav-link link-dark fs-4" href="https://www.facebook.com/profile.php?id=100093887452815" target="_blank">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark fs-4" href="#!">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark fs-4" href="https://github.com/Duong04" target="_blank">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark fs-4" href="https://www.instagram.com/tinhsocode/" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </footer>
     </main>
+    <a href="#" class="link-change btn btn-primary position-fixed fs-4 fw-bold" style="bottom: 40px; right: 20px;"><i class="bi bi-chevron-double-up"></i></a>
     <script src="./node_modules/aos/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
     <script src="./public/js/main.js"></script>
     <script src="../bootstrap/jquery-3.5.1.slim.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 </html>
