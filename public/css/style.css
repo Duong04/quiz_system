@@ -37,7 +37,6 @@ html {
     animation: fadeInC 0.8s linear;
 }
 
-.banner,
 header {
     background-image: url(../images/banner/banner_bg.jpg);
     background-size: cover;
@@ -46,6 +45,29 @@ header {
 
 .navbar-brand {
     width: 170px;
+}
+
+.carousel-caption {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    padding-bottom: 0;
+}
+
+.btn-carousel i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #1363DF;
+    color: var(--white-color);
+    transition: all ease 0.4s;
+}
+
+.btn-carousel i:hover {
+    background-color: #082A5E;
 }
 
 .btn-primary {
@@ -214,7 +236,7 @@ header {
 
 .d-grid-3 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
@@ -226,6 +248,58 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-c::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.2);
+    transition: all ease 0.3s;
+    display: none;
+}
+
+.card-c:hover::before {
+    display: block;
+}
+
+.card-c:hover .btn-link a {
+    display: flex;
+}
+
+.btn-link {
+    display: flex;
+    position: absolute;
+    gap: 10px;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn-link a {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #1363DF;
+    border-radius: 50%;
+    color: #1363DF;
+    animation: moveUpC 0.4s ease;
+    transition: all ease 0.4s;
+}
+
+.btn-link a:hover {
+    background-color: #1363DF;
+    color: var(--white-color);
 }
 
 .hover-effect {
@@ -243,7 +317,7 @@ header {
 }
   
 .product-item:hover .hover-effect {
-    left: 90%;
+    left: 100%;
     opacity: 1;
 }
 
@@ -270,8 +344,29 @@ header {
     margin-right: 5px;
 }
 
-footer {
+.footer {
     background-color: #061E43;
+}
+
+.breadcrumb-bg {
+    background-attachment: fixed;
+}
+
+.breadcrumb-bg::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #031227;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+
+.rotate {
+    animation: rotate linear 5.8s infinite;
 }
 
 @keyframes fadeInC {
@@ -281,6 +376,14 @@ footer {
     }to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }to {
+        transform: rotate(360deg);
     }
 }
 
@@ -305,6 +408,13 @@ footer {
 @media (max-width: 86.875em) and (min-width: 61.875em) {
     .btn-none {
         display: none;
+    }
+
+}
+
+@media (max-width:75em) {
+    .d-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
