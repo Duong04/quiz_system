@@ -3,6 +3,8 @@
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3"
+    "bootstrap-icons": "^1.11.3",
+    "paginationjs": "^2.6.0",
+    "wow.js": "^1.2.2"
   }
 }

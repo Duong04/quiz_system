@@ -3,6 +3,8 @@
     --tg-heading-color: #082A5E;
     --tg-border-2: #D0DAE9;
     --white-color: #fff;
+    --animate-duration: 2s;
+    --animate-delay: 2s;
 }
 
 html {
@@ -234,10 +236,63 @@ header {
     scrollbar-width: none;
 }
 
-.d-grid-3 {
+.nav-item-b {
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-item-b:last-child {
+    border: none;
+}
+
+.aside-title {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.aside-title::before {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #000;
+    bottom: -8px;
+    content: "";
+    height: 0;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    width: 0;
+}
+
+.nav-link-aside {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    color: var(--tg-heading-color);
+    font-size: 1.0rem;
+    transition: all ease 0.3s;
+}
+
+.nav-link-aside:hover {
+    transform: translateX(15px);
+}
+
+.d-grid-4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+}
+
+.d-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .btn-2 {
@@ -253,6 +308,7 @@ header {
 .card {
     position: relative;
     overflow: hidden;
+    transition: all ease 0.3s;
 }
 
 .card-c::before {
@@ -263,7 +319,6 @@ header {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.2);
-    transition: all ease 0.3s;
     display: none;
 }
 
@@ -273,6 +328,23 @@ header {
 
 .card-c:hover .btn-link a {
     display: flex;
+}
+
+.btn-card {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tg-theme-primary);
+    background-color: var(--white-color);
+    border-radius: 50%;
+    transition: all ease 0.4s;
+}
+
+.btn-card:hover {
+    background-color: var(--tg-theme-primary);
+    color: var(--white-color);
 }
 
 .btn-link {
@@ -364,9 +436,28 @@ header {
     z-index: -1;
 }
 
+.link-dark:hover {
+    color: #ccc !important;
+}
 
 .rotate {
     animation: rotate linear 5.8s infinite;
+}
+
+.btn-white {
+    max-width: 200px;
+    height: 50px;
+    background-color: var(--white-color);
+    padding: 5px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid var(--tg-theme-primary);
 }
 
 @keyframes fadeInC {
@@ -412,10 +503,11 @@ header {
 
 }
 
-@media (max-width:75em) {
-    .d-grid-3 {
+@media (max-width:75em) and (min-width: 61.875em){
+    .d-grid-4 {
         grid-template-columns: repeat(3, 1fr);
     }
+
 }
 
 @media (max-width: 61.875em) {
@@ -423,7 +515,7 @@ header {
         background-color: #fff;
     }
 
-    .d-grid-3 {
+    .d-grid-4 {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -432,10 +524,14 @@ header {
     .h-640 {
         height: 500px;
     }
+
+    .d-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 37.5em) {
-    .d-grid-3 {
+    .d-grid-4 {
         grid-template-columns: repeat(1, 1fr);
     }
 }
@@ -443,5 +539,9 @@ header {
 @media (max-width: 30.625em) {
     .d-none-r {
         display: none;
+    }
+
+    .d-grid-3 {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
