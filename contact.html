@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/style.css">
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
-    <link rel="stylesheet" href="./node_modules/aos/dist/aos.css">
+    <link rel="stylesheet" href="./node_modules/wow.js/css/libs/animate.css">
 </head>
 <body>
     <div class="mouse-trail"></div>
@@ -37,10 +36,10 @@
                                 <a class="nav-link link-hv" href="./contact.html">Liên hệ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="#">Góp ý</a>
+                                <a class="nav-link link-hv" href="./feedback.html">Góp ý</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="#">Hỏi đáp</a>
+                                <a class="nav-link link-hv" href="./ask.html">Hỏi đáp</a>
                             </li>
                         </ul>
                         <form role="search" action="" class="d-lg-flex form-search col-12 col-lg-2 d-flex justify-content-between">
@@ -48,8 +47,8 @@
                             <button><i class="bi bi-search"></i></button>
                         </form>
                         <div class="col-12 col-lg-2 d-flex justify-content-end g-2 mt-3 mt-lg-0" style="gap: 5px;">
-                            <a href="" class="btn btn-outline-primary btn-h">Đăng nhập</a>
-                            <a href="" class="btn btn-primary btn-h btn-none">Đăng ký</a>
+                            <a href="./login.html" class="btn btn-outline-primary btn-h">Đăng nhập</a>
+                            <a href="./register.html" class="btn btn-primary btn-h btn-none">Đăng ký</a>
                         </div>
                     </div>
                 </div>
@@ -57,8 +56,8 @@
         </header>
         <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-image: url(./public/images/banner/breadcrumb_bg.jpg); background-position: center 70px;padding: 90px 0;">
             <div class="breadcrumb-content py-5 container">
-                <h3 class="title text-white">Liên hệ</h3>
-                <nav class="text-white" aria-label="breadcrumb">
+                <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">Liên hệ</h3>
+                <nav class="text-white wow fadeInLeft" data-wow-delay="0.4s" aria-label="breadcrumb">
                     <ol class="breadcrumb d-flex align-items-center">
                         <li class="breadcrumb-item"><a class="text-white fs-5 fw-medium nav-link" href="#">Trang chủ</a></li>
                         <i class="bi bi-chevron-right px-2"></i>
@@ -70,18 +69,18 @@
         <section class="py-5">
             <div class="py-5 container d-flex justify-content-between flex-wrap g-50">
                 <div class="col-12 col-lg-4">
-                    <h1>LIÊN LẠC VỚI CHÚNG TÔI</h1>
-                    <div class="text-color-grey">
+                    <h1 class="wow fadeInLeft" data-wow-delay="0.2s">LIÊN LẠC VỚI CHÚNG TÔI</h1>
+                    <div class="text-color-grey wow fadeInLeft" data-wow-delay="0.3s">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut ab a quibusdam consectetur temporibus modi delectus esse vitae illo minus odit.
                     </div>
                     <div class="mt-3 d-flex flex-column g-25">
-                        <div class="d-flex g-20 align-items-center">
+                        <div class="d-flex g-20 align-items-center wow fadeInLeft" data-wow-delay="0.4s">
                             <div class="btn btn-primary rounded-circle">
                                 <i class="bi bi-geo-alt-fill fs-3"></i>
                             </div>
                             <div>Đà Nẵng - Liên Chiểu - Hòa Minh - 16 Nguyễn Như Hạnh</div>
                         </div>
-                        <div class="d-flex g-20 align-items-center">
+                        <div class="d-flex g-20 align-items-center wow fadeInLeft" data-wow-delay="0.5s">
                             <div class="btn btn-primary rounded-circle">
                                 <i class="bi bi-telephone-forward fs-3"></i>
                             </div>
@@ -90,7 +89,7 @@
                                 <span>+123 555 69090</span>
                             </div>
                         </div>
-                        <div class="d-flex g-20 align-items-center">
+                        <div class="d-flex g-20 align-items-center wow fadeInLeft" data-wow-delay="0.6s">
                             <div class="btn btn-primary rounded-circle">
                                 <i class="bi bi-envelope fs-3"></i>
                             </div>
@@ -105,23 +104,23 @@
                     <div class="main-form p-5 rounded-3" style="background-color: #E7EFFC;">
                         <h4>Liên hệ</h4>
                         <form action="" class="row">
-                            <div class="col-12 col-sm-6 mb-3 form-group">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label for="name" class="form-label">Họ và tên</label>
                                 <input required type="Text" class="form-control" id="name" placeholder="Họ và tên của bạn">
                             </div>
-                            <div class="col-12 col-sm-6 mb-3 form-group">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input required type="email" class="form-control" id="email" placeholder="Email của bạn">
                             </div>
-                            <div class="col-12 col-sm-6 mb-3 form-group">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label for="phone" class="form-label">Số điện thoại</label>
                                 <input required type="number" class="form-control" id="phone" placeholder="Số điện thoại của bạn">
                             </div>
-                            <div class="col-12 col-sm-6 mb-3 form-group">
+                            <div class="col-12 col-sm-6 mb-3">
                                 <label for="title" class="form-label">Tiêu đề</label>
                                 <input required type="text" class="form-control" id="title" placeholder="Tiêu đề">
                             </div>
-                            <div class="col-12 mb-3 form-group">
+                            <div class="col-12 mb-3">
                                 <label for="message" class="form-label">Tin nhắn</label>
                                 <textarea required name="" id="message" class="form-control" cols="30" rows="5" placeholder="Tin nhắn của bạn"></textarea>
                             </div>
@@ -253,7 +252,7 @@
         </footer>
     </main>
     <a href="#" class="link-change btn btn-primary position-fixed fs-4 fw-bold" style="bottom: 40px; right: 20px;"><i class="bi bi-chevron-double-up"></i></a>
-    <script src="./node_modules/aos/dist/aos.js"></script>
+    <script src="./node_modules/wow.js/dist/wow.min.js"></script>
     <script src="../bootstrap/jquery-3.5.1.slim.min.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="./public/js/main.js"></script>

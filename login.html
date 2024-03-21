@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./public/css/style.css">
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
-    <link rel="stylesheet" href="./node_modules/aos/dist/aos.css">
+    <link rel="stylesheet" href="./node_modules/wow.js/css/libs/animate.css">
 </head>
 <body>
     <div class="mouse-trail"></div>
@@ -37,10 +36,10 @@
                                 <a class="nav-link link-hv" href="./contact.html">Liên hệ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="#">Góp ý</a>
+                                <a class="nav-link link-hv" href="./feedback.html">Góp ý</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="#">Hỏi đáp</a>
+                                <a class="nav-link link-hv" href="./ask.html">Hỏi đáp</a>
                             </li>
                         </ul>
                         <form role="search" action="" class="d-lg-flex form-search col-12 col-lg-2 d-flex justify-content-between">
@@ -48,8 +47,8 @@
                             <button><i class="bi bi-search"></i></button>
                         </form>
                         <div class="col-12 col-lg-2 d-flex justify-content-end g-2 mt-3 mt-lg-0" style="gap: 5px;">
-                            <a href="" class="btn btn-outline-primary btn-h">Đăng nhập</a>
-                            <a href="" class="btn btn-primary btn-h btn-none">Đăng ký</a>
+                            <a href="./login.html" class="btn btn-outline-primary btn-h">Đăng nhập</a>
+                            <a href="./register.html" class="btn btn-primary btn-h btn-none">Đăng ký</a>
                         </div>
                     </div>
                 </div>
@@ -57,8 +56,8 @@
         </header>
         <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-image: url(./public/images/banner/breadcrumb_bg.jpg); background-position: center 70px;padding: 90px 0;">
             <div class="breadcrumb-content py-5 container">
-                <h3 class="title text-white">Đăng nhập</h3>
-                <nav class="text-white" aria-label="breadcrumb">
+                <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">Đăng nhập</h3>
+                <nav class="text-white wow fadeInLeft" data-wow-delay="0.4s">
                     <ol class="breadcrumb d-flex align-items-center">
                         <li class="breadcrumb-item"><a class="text-white fs-5 fw-medium nav-link" href="#">Trang chủ</a></li>
                         <i class="bi bi-chevron-right px-2"></i>
@@ -67,9 +66,46 @@
                 </nav>
             </div>
         </div>
-        <section class="py-5 bg-light d-flex justify-content-center">
-            <div class="bg-white col-4 p-5 rounded" style="box-shadow: 0 0 10px #ccc;">
-                
+        <section class="bg-light d-flex justify-content-center">
+            <div class="col-8 d-none d-xl-flex align-items-center justify-content-center" style="background-color: #E7EFFC; padding: 100px 0;">
+                <img class="w-50" src="./public/images/banner/login-security.svg" alt="">
+            </div>
+            <div class="px-3 p-sm-5 col-12 col-xl-4 d-flex justify-content-center align-items-center" style="padding: 100px 0;">
+                <div style="width: 400px;">
+                    <h4 class="mb-3">Hi, Welcome back!</h4>
+                    <div class="d-flex justify-content-between g-25">
+                        <button class="btn border border-secondary col">
+                            <img width="25px" src="./public/images/icon/gg.png" alt="">
+                            Google
+                        </button>
+                        <button class="btn border border-secondary col">
+                            <img width="25px" src="./public/images/icon/Facebook_Logo_(2019).png.webp" alt="">
+                            Facebook
+                        </button>
+                    </div>
+                    <p class="text-center mt-3">Hoặc đăng nhập với</p>
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email của bạn</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input type="password" class="form-control" id="password" placeholder="Mật khẩu">
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Nhớ mật khẩu
+                                </label>
+                            </div>
+                            <a href="./forgotPsw.html" class="text-decoration-none">Bạn quên mật khẩu?</a>
+                        </div>
+                        <button class="btn btn-primary col-12 mb-3">Đăng nhập</button>
+                    </form>
+                    <div class="text-center">Bạn chưa có tài khoản? <a href="./register.html" class="text-decoration-none">Đăng ký</a></div>
+                </div>
             </div>
         </section>
         <footer class="footer">
@@ -189,7 +225,7 @@
         </footer>
     </main>
     <a href="#" class="link-change btn btn-primary position-fixed fs-4 fw-bold" style="bottom: 40px; right: 20px;"><i class="bi bi-chevron-double-up"></i></a>
-    <script src="./node_modules/aos/dist/aos.js"></script>
+    <script src="./node_modules/wow.js/dist/wow.min.js"></script>
     <script src="../bootstrap/jquery-3.5.1.slim.min.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="./public/js/main.js"></script>

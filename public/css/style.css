@@ -12,6 +12,10 @@ html {
     scroll-behavior: smooth;
 }
 
+label {
+    cursor: pointer;
+}
+
 .mouse-trail {
     position: fixed;
     z-index: 99999;
@@ -64,6 +68,12 @@ header {
     width: 50px;
     border-radius: 50%;
     background-color: #1363DF;
+    color: var(--white-color);
+    transition: all ease 0.4s;
+}
+
+.bg-primary-c {
+    background-color: var(--tg-theme-primary) !important;
     color: var(--white-color);
     transition: all ease 0.4s;
 }
@@ -406,8 +416,9 @@ header {
 }
 
 .input-group-c input:focus {
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    border: none !important;;
+    box-shadow: none !important;
     background-color: #E7EFFC;
 }
 
@@ -460,6 +471,26 @@ header {
     border: 1px solid var(--tg-theme-primary);
 }
 
+.mt-250 {
+    margin-top: -250px;
+}
+
+.star-rate input {
+    appearance: none;
+}
+
+.star-rate input::before {
+    content: '\2605';
+    color: #ccc;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.star-rate input:checked::before, 
+.star-rate input:checked ~ input::before {
+    color: #ffb800;
+}
+
 @keyframes fadeInC {
     from {
         opacity: 0;
@@ -493,6 +524,12 @@ header {
         transform: translateY(-15px);
     }100% {
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 62em) {
+    .mt-250 {
+        margin: 0px;
     }
 }
 
@@ -544,4 +581,49 @@ header {
     .d-grid-3 {
         grid-template-columns: repeat(1, 1fr);
     }
+}
+
+.slick-slide {
+    margin: 0 10px;
+}
+
+.slick-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: 16px;
+    color: var(--text-color);
+    box-shadow: 0 0 3px #ccc;
+    border: none;
+    z-index: 2;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all linear 0.5s;
+}
+
+.slick-arrow:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.slick-prev{
+    left: -10px;
+}
+
+.slick-next{
+    right: -10px;
+}
+
+.banner-main .slick-arrow{
+    width: 35px;
+    height: 50px;
+    font-size: 1.4rem;
+    border-radius: 5px;
 }

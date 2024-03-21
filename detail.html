@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="./node_modules/wow.js/css/libs/animate.css">
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+      />
+</head>
+<body>
+    <div class="mouse-trail"></div>
+    <main>
+        <header>
+            <nav class="navbar navbar-expand-lg px-2 bg-white-r shadow">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="./public/images/logo/logo.png" class="w-100" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-start justify-content-lg-end g-25" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link link-hv" aria-current="page" href="./index.html">Trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-hv" href="./categories.html">Danh mục</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-hv" href="./about.html">Giới thiệu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-hv" href="./contact.html">Liên hệ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-hv" href="./feedback.html">Góp ý</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-hv" href="./ask.html">Hỏi đáp</a>
+                            </li>
+                        </ul>
+                        <form role="search" action="" class="d-lg-flex form-search col-12 col-lg-2 d-flex justify-content-between">
+                            <input required type="text" placeholder="Tìm kiếm bài quiz...">
+                            <button><i class="bi bi-search"></i></button>
+                        </form>
+                        <div class="col-12 col-lg-2 d-flex justify-content-end g-2 mt-3 mt-lg-0" style="gap: 5px;">
+                            <a href="./login.html" class="btn btn-outline-primary btn-h">Đăng nhập</a>
+                            <a href="./register.html" class="btn btn-primary btn-h btn-none">Đăng ký</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-color: #041734; padding: 90px 0;">
+            <div class="breadcrumb-content py-5 container">
+                <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">Lập trình PHP</h3>
+                <p class="text-white w-50 wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda repellendus maxime veritatis distinctio sit commodi voluptas magnam alias?.</p>
+                <div class="d-flex flex-wrap g-15 wow fadeInLeft" data-wow-delay="0.5s">
+                    <div class="d-flex align-items-center g-15">
+                        <img class="roudted-cricle" width="50px" height="50px" src="./public/images/icon/author_img.png" alt="" style="border-radius: 50%;">
+                        <span class="text-white">Eduvalt</span>
+                    </div>
+                    <div class="d-flex align-items-center text-white">
+                        <i class="bi bi-question-circle"></i>
+                        <span class="text-white mx-2">10 câu hỏi</span>
+                    </div>
+                    <div class="d-flex align-items-center text-white">
+                        <i class="bi bi-alarm"></i>
+                        <span class="text-white mx-2">10 phút</span>
+                    </div>
+                    <div class="d-flex align-items-center text-white">
+                        <i class="bi bi-people"></i>
+                        <span class="text-white mx-2">99 người tham gia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="pt-5 pb-3">
+            <div class="container d-flex justify-content-center flex-wrap g-50">
+                <div class="col-12 col-lg-7">
+                    <div class="card" style="border: none;">
+                        <img class="card-img-top w-100 object-fit-contain border" height="400px" src="./public/images/logos/PHPP.png" alt="">
+                        <div class="card-body px-0">
+                            <div class="card-text">
+                                <p><span class="fw-bold">Bạn muốn kiểm trả kĩ năng của mình về PHP</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reprehenderit molestias expedita iusto, praesentium quasi velit, tenetur neque nesciunt voluptatibus, maiores doloremque adipisci facere exercitationem soluta nisi natus magnam animi!</p>
+                                <p><span class="fw-bold">Knowing PHP has allowed me to make enough money to stay home and make courses like this one for students all over the world.</span> Being a PHP developer can allow anyone to make really good money online and offline, developing dynamic applications.</p>
+                            </div>
+                        </div>
+                        <h4 class="card-title border-bottom py-3">Bạn sẽ học được những gì sau khi làm Quizz?</h4>
+                        <div class="d-flex flex-wrap g-15 pt-3">
+                            <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                                <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                                <p>Understand the fundamentals of healthy dieting (calories, protein, carbs, fat, vitamins & minerals)</p>
+                            </div>
+                            <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                                <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                                <p>Create a diet that is perfect for your needs and lifestyle</p>
+                            </div>
+                            <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                                <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                                <p>Learn when, what and how much you should eat for optimal body composition</p>
+                            </div>
+                            <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                                <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                                <p>Build more muscle by optimizing your meal plan</p>
+                            </div>
+                            <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                                <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                                <p>Lose fat faster by optimizing your meal plan</p>
+                            </div>
+                            <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                                <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                                <p>Improve immunity and energy levels with the right vitamins and minerals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="rounded-2 border position-relative z-3 mt-250" style="box-shadow: 0 0 10px #ccc;">
+                        <div class="col-12 bg-light p-4 border-bottom rounded-top-2">
+                            <h4>Lập trình PHP</h4>
+                            <a href="" class="col-12 btn btn-primary my-3">Bắt đầu ngay</a>
+                            <p class="text-center">Free access this course</p>
+                        </div>   
+                        <div class="col-12 p-4 bg-white rounded-bottom-2">
+                            <ul class="nav flex-column g-15">
+                                <li class="nav-item">
+                                    <i class="bi bi-bar-chart"></i>
+                                    <span>Tất cả level</span>
+                                </li>
+                                <li class="nav-item">
+                                    <i class="bi bi-question-circle"></i>
+                                    <span>10 câu hỏi</span>
+                                </li>
+                                <li class="nav-item">
+                                    <i class="bi bi-translate"></i>
+                                    <span>Tiếng việt</span>
+                                </li>
+                                <li class="nav-item">
+                                    <i class="bi bi-alarm"></i>
+                                    <span>10 phút</span>
+                                </li>
+                                <li class="nav-item">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                    <span>Cập nhật 3 tháng trước</span>
+                                </li>
+                            </ul>
+                        </div>                         
+                    </div>
+                    <div class="mt-5 border rounded-2">
+                        <div class="col-12 p-4 border-bottom">
+                            <h4 class="text-link-b">Người tạo Quizz</h4>
+                            <div class="d-flex align-items-center g-15 py-3">
+                                <img width="50px" height="50px" src="./public/images/icon/author_img.png" alt="">
+                                <span class="fs-5 fw-semibold">Eduvalt</span>
+                            </div>
+                        </div>
+                        <div class="col-12 p-4">
+                            <h4 class="text-link-b">Audience</h4>
+                            <ul class="nav flex-column g-15 text-color-grey">
+                                <li>Anyone wanting to learn the truth about dieting & meal planning</li>
+                                <li>Anyone with an open mind towards dieting</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 p-4">
+                            <h4 class="text-link-b">Material Includes</h4>
+                            <ul class="nav flex-column g-15 text-color-grey">
+                                <li>4 hours on-demand video</li>
+                                <li>4 articles</li>
+                                <li>3 downloadable resources</li>
+                                <li>Full lifetime access</li>
+                                <li>Access on mobile and TV</li>
+                                <li>Certificate of Completion</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 p-4">
+                            <h4 class="text-link-b">Requirements</h4>
+                            <ul class="nav flex-column g-15 text-color-grey">
+                                <li>No prior health knowledge is required or assumed</li>
+                                <li>A digital food scale will help but is not required</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 p-4">
+                            <h4 class="text-link-b">Resources</h4>
+                            <div class="d-flex flex-column g-15">
+                                <a href="" class="btn-1 text-decoration-none">Html5, Css3</a>
+                                <a href="" class="btn-1 text-decoration-none">Javascript</a>
+                                <a href="" class="btn-1 text-decoration-none">Php, Laravel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="slider-quiz container">
+                <div class="card card-c product-item">
+                    <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ADAV.jpg" alt="">
+                    <div class="card-body">
+                        <div class="d-flex g-15">
+                            <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                            <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                        </div>
+                        <h5 class="card-title my-2">Lập trình Android nâng cao</h5>
+                        <hr>
+                        <div class="d-flex align-items-center g-15">
+                            <div class="btn-2">
+                                <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                            </div>
+                            <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                    <div class="btn-link">
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                    </div>
+                </div>
+                <div class="card card-c product-item">
+                    <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/PHPP.png" alt="">
+                    <div class="card-body">
+                        <div class="d-flex g-15">
+                            <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                            <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                        </div>
+                        <h5 class="card-title my-2">Lập trình PHP</h5>
+                        <hr>
+                        <div class="d-flex align-items-center g-15">
+                            <div class="btn-2">
+                                <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                            </div>
+                            <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                    <div class="btn-link">
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                    </div>
+                </div>
+                <div class="card card-c product-item">
+                    <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/JAAV.png" alt="">
+                    <div class="card-body">
+                        <div class="d-flex g-15">
+                            <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                            <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                        </div>
+                        <h5 class="card-title my-2">Lập trình Java nâng cao</h5>
+                        <hr>
+                        <div class="d-flex align-items-center g-15">
+                            <div class="btn-2">
+                                <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                            </div>
+                            <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                    <div class="btn-link">
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                    </div>
+                </div>
+                <div class="card card-c product-item">
+                    <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/HTCS.jpg" alt="">
+                    <div class="card-body">
+                        <div class="d-flex g-15">
+                            <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                            <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                        </div>
+                        <h5 class="card-title my-2">HTML5 và CSS3</h5>
+                        <hr>
+                        <div class="d-flex align-items-center g-15">
+                            <div class="btn-2">
+                                <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                            </div>
+                            <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                    <div class="btn-link">
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                    </div>
+                </div>
+                <div class="card card-c product-item">
+                    <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ASNE.png" alt="">
+                    <div class="card-body">
+                        <div class="d-flex g-15">
+                            <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                            <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                        </div>
+                        <h5 class="card-title my-2">Lập trình ASP.NET</h5>
+                        <hr>
+                        <div class="d-flex align-items-center g-15">
+                            <div class="btn-2">
+                                <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                            </div>
+                            <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                    <div class="btn-link">
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                    </div>
+                </div>
+                <div class="card card-c product-item">
+                    <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/DBAV.png" alt="">
+                    <div class="card-body">
+                        <div class="d-flex g-15">
+                            <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                            <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                        </div>
+                        <h5 class="card-title my-2">Lập trình PHP</h5>
+                        <hr>
+                        <div class="d-flex align-items-center g-15">
+                            <div class="btn-2">
+                                <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                            </div>
+                            <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                    <div class="btn-link">
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                        <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <section class="py-4 py-md-5 py-xl-8 border-top border-light">
+                <div class="container overflow-hidden">
+                    <div class="row gy-4 gy-lg-0 justify-content-xl-between">
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <div class="widget">
+                                <a href="#!">
+                                    <img src="./public/images/logo/secondary_logo.png" alt="BootstrapBrain Logo" width="175" height="57">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <div class="widget text-white">
+                                <h4 class="widget-title mb-4">Get in Touch</h4>
+                                <address class="mb-4">8014 Edith Blvd NE, Albuquerque, New York, United States</address>
+                                <p class="mb-1">
+                                    <a class="link-secondary text-decoration-none" href="tel:+15057922430">(505) 792-2430</a>
+                                </p>
+                                <p class="mb-0">
+                                    <a class="link-secondary text-decoration-none" href="mailto:demo@yourdomain.com">demo@yourdomain.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                            <div class="widget text-white">
+                                <h4 class="widget-title mb-4">Learn More</h4>
+                                <ul class="nav flex-column">
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Trang chủ</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Danh mục</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Giới thiệu</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Liên hệ</a>
+                                    </li>
+                                    <li class="mb-2">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Góp ý</a>
+                                    </li>
+                                    <li class="mb-0">
+                                        <a href="#!" class="link-secondary text-decoration-none fw-semibold">Hỏi đáp</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 col-xl-4">
+                            <div class="widget text-white">
+                                <h4 class="widget-title mb-4">Our Newsletter</h4>
+                                <p class="mb-4">Subscribe to our newsletter to get our news & discounts delivered to you.</p>
+                                <form action="#!">
+                                    <div class="row gy-4">
+                                        <div class="col-12">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="email-newsletter-addon">
+                                                    <i class="bi bi-envelope-at"></i>
+                                                </span>
+                                                <input type="email" class="form-control" id="email-newsletter" value="" placeholder="Email Address" aria-label="email-newsletter" aria-describedby="email-newsletter-addon" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+            <div class="py-4 py-md-5 py-xl-8 border-top border-light-subtle">
+                <div class="container overflow-hidden">
+                    <div class="row gy-4 gy-md-0">
+                        <div class="col-xs-12 col-md-7 order-1 order-md-0 text-white">
+                            <div class="copyright text-center text-md-start">
+                                &copy; 2024 Copyright DevSugar.
+                            </div>
+                            <div class="credits text-secondary text-center text-md-start mt-2 fs-7">
+                                Web Developer with <span class="text-primary">&#9829;</span>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xs-12 col-md-5 order-0 order-md-1">
+                            <ul class="nav justify-content-center justify-content-md-end">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white link-dark fs-4" href="https://www.facebook.com/profile.php?id=100093887452815" target="_blank">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white link-dark fs-4" href="#!">
+                                        <i class="bi bi-youtube"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white link-dark fs-4" href="https://github.com/Duong04" target="_blank">
+                                        <i class="bi bi-github"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white link-dark fs-4" href="https://www.instagram.com/tinhsocode/" target="_blank">
+                                        <i class="bi bi-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <a href="#" class="link-change btn btn-primary position-fixed fs-4 fw-bold" style="bottom: 40px; right: 20px;"><i class="bi bi-chevron-double-up"></i></a>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script src="./node_modules/wow.js/dist/wow.min.js"></script>
+    <script src="../bootstrap/jquery-3.5.1.slim.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./public/js/main.js"></script>
+</body>
+</html>
