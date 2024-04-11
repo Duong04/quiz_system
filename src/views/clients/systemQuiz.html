@@ -1,0 +1,26 @@
+<section style="padding: 100px 0;" ng-controller="QuizController">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-4">
+            <h5>{{displayTime}}</h5>
+            <button ng-click="btnEndQuiz()" class="btn btn-success">Kết thúc bài kiểm tra</button>
+        </div>
+        <div class="border rounded-2">
+            <div class="bg-light fw-medium rounded-top-2">
+                <h3 class="p-3">{{courseName}}</h3>
+            </div>
+            <div class="p-3 d-flex flex-column g-15">
+                <h4>{{currentIndex + 1}}. {{currentQuestion.Text}}</h4>
+                <div class="p-3 rounded" style="background-color: #E7EFFC;" ng-repeat="answer in currentQuestion.Answers">
+                    <input class="form-check-input" type="radio" name="radio" id="radio-{{answer.Id}}" ng-model="userAnswers[currentIndex]" ng-click="selectAnswer(answer.Id)" ng-value="answer.Id">
+                    <label class="form-check-label mx-2" for="radio-{{answer.Id}}">
+                        {{answer.Text}}
+                    </label>
+                </div>
+            </div>
+            <div class="p-3 rounded-bottom-2 bg-light">
+                <button class="btn btn-primary" ng-click="prevQuestion()" ng-disabled="currentIndex <= 0"><i class="bi bi-arrow-left"></i></button>
+                <button class="btn btn-primary" ng-click="nextQuestion()" ng-disabled="currentIndex >= 14"><i class="bi bi-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>

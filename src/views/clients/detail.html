@@ -1,0 +1,281 @@
+<div ng-controller="DetailController">
+    <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-color: #041734; padding: 90px 0;">
+        <div class="breadcrumb-content py-5 container">
+            <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">{{courseDetail.Name}}</h3>
+            <p class="text-white w-50 wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda repellendus maxime veritatis distinctio sit commodi voluptas magnam alias?.</p>
+            <div class="d-flex flex-wrap g-15 wow fadeInLeft" data-wow-delay="0.5s">
+                <div class="d-flex align-items-center g-15">
+                    <img class="roudted-cricle" width="50px" height="50px" src="./public/images/icon/author_img.png" alt="" style="border-radius: 50%;">
+                    <span class="text-white">Eduvalt</span>
+                </div>
+                <div class="d-flex align-items-center text-white">
+                    <i class="bi bi-question-circle"></i>
+                    <span class="text-white mx-2">15 câu hỏi</span>
+                </div>
+                <div class="d-flex align-items-center text-white">
+                    <i class="bi bi-alarm"></i>
+                    <span class="text-white mx-2">10 phút</span>
+                </div>
+                <div class="d-flex align-items-center text-white">
+                    <i class="bi bi-people"></i>
+                    <span class="text-white mx-2">99 người tham gia</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="pt-5 pb-3">
+        <div class="container d-flex justify-content-center flex-wrap g-50">
+            <div class="col-12 col-lg-7">
+                <div class="card" style="border: none;">
+                    <img class="card-img-top w-100 object-fit-contain border" height="400px" src="./public/images/logos/{{courseDetail.Logo}}" alt="">
+                    <div class="card-body px-0">
+                        <div class="card-text">
+                            <p><span class="fw-bold">Bạn muốn kiểm trả kĩ năng của mình về PHP</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reprehenderit molestias expedita iusto, praesentium quasi velit, tenetur neque nesciunt voluptatibus, maiores doloremque adipisci facere exercitationem soluta nisi natus magnam animi!</p>
+                            <p><span class="fw-bold">Knowing PHP has allowed me to make enough money to stay home and make courses like this one for students all over the world.</span> Being a PHP developer can allow anyone to make really good money online and offline, developing dynamic applications.</p>
+                        </div>
+                    </div>
+                    <h4 class="card-title border-bottom py-3">Bạn sẽ học được những gì sau khi làm Quizz?</h4>
+                    <div class="d-flex flex-wrap g-15 pt-3">
+                        <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                            <p>Understand the fundamentals of healthy dieting (calories, protein, carbs, fat, vitamins & minerals)</p>
+                        </div>
+                        <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                            <p>Create a diet that is perfect for your needs and lifestyle</p>
+                        </div>
+                        <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                            <p>Learn when, what and how much you should eat for optimal body composition</p>
+                        </div>
+                        <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                            <p>Build more muscle by optimizing your meal plan</p>
+                        </div>
+                        <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                            <p>Lose fat faster by optimizing your meal plan</p>
+                        </div>
+                        <div class="col-12 col-md-5 d-flex align-items-start g-15">
+                            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                            <p>Improve immunity and energy levels with the right vitamins and minerals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="rounded-2 border position-relative z-3 mt-250" style="box-shadow: 0 0 10px #ccc;">
+                    <div class="col-12 bg-light p-4 border-bottom rounded-top-2">
+                        <h4>{{courseDetail.Name}}</h4>
+                        <a ng-show="checkFullname" ng-click="confirm(courseDetail.Id)" class="col-12 btn btn-primary my-3">Bắt đầu ngay</a>
+                        <div ng-hide="checkFullname" ng-click="btnWarning()" class="col-12 btn btn-primary my-3">Bắt đầu ngay</div>
+                        <p class="text-center">Free access this course</p>
+                    </div>   
+                    <div class="col-12 p-4 bg-white rounded-bottom-2">
+                        <ul class="nav flex-column g-15">
+                            <li class="nav-item">
+                                <i class="bi bi-bar-chart"></i>
+                                <span>Tất cả level</span>
+                            </li>
+                            <li class="nav-item">
+                                <i class="bi bi-question-circle"></i>
+                                <span>10 câu hỏi</span>
+                            </li>
+                            <li class="nav-item">
+                                <i class="bi bi-translate"></i>
+                                <span>Tiếng việt</span>
+                            </li>
+                            <li class="nav-item">
+                                <i class="bi bi-alarm"></i>
+                                <span>10 phút</span>
+                            </li>
+                            <li class="nav-item">
+                                <i class="bi bi-arrow-repeat"></i>
+                                <span>Cập nhật 3 tháng trước</span>
+                            </li>
+                        </ul>
+                    </div>                         
+                </div>
+                <div class="mt-5 border rounded-2">
+                    <div class="col-12 p-4 border-bottom">
+                        <h4 class="text-link-b">Người tạo Quizz</h4>
+                        <div class="d-flex align-items-center g-15 py-3">
+                            <img width="50px" height="50px" src="./public/images/icon/author_img.png" alt="">
+                            <span class="fs-5 fw-semibold">Eduvalt</span>
+                        </div>
+                    </div>
+                    <div class="col-12 p-4">
+                        <h4 class="text-link-b">Audience</h4>
+                        <ul class="nav flex-column g-15 text-color-grey">
+                            <li>Anyone wanting to learn the truth about dieting & meal planning</li>
+                            <li>Anyone with an open mind towards dieting</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 p-4">
+                        <h4 class="text-link-b">Material Includes</h4>
+                        <ul class="nav flex-column g-15 text-color-grey">
+                            <li>4 hours on-demand video</li>
+                            <li>4 articles</li>
+                            <li>3 downloadable resources</li>
+                            <li>Full lifetime access</li>
+                            <li>Access on mobile and TV</li>
+                            <li>Certificate of Completion</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 p-4">
+                        <h4 class="text-link-b">Requirements</h4>
+                        <ul class="nav flex-column g-15 text-color-grey">
+                            <li>No prior health knowledge is required or assumed</li>
+                            <li>A digital food scale will help but is not required</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 p-4">
+                        <h4 class="text-link-b">Resources</h4>
+                        <div class="d-flex flex-column g-15">
+                            <a href="" class="btn-1 text-decoration-none">Html5, Css3</a>
+                            <a href="" class="btn-1 text-decoration-none">Javascript</a>
+                            <a href="" class="btn-1 text-decoration-none">Php, Laravel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="slider-quiz container">
+            <div class="card card-c product-item">
+                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ADAV.jpg" alt="">
+                <div class="card-body">
+                    <div class="d-flex g-15">
+                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                    </div>
+                    <h5 class="card-title my-2">Lập trình Android nâng cao</h5>
+                    <hr>
+                    <div class="d-flex align-items-center g-15">
+                        <div class="btn-2">
+                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                        </div>
+                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                    </div>
+                </div>
+                <div class="hover-effect"></div>
+                <div class="btn-link">
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                </div>
+            </div>
+            <div class="card card-c product-item">
+                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/PHPP.png" alt="">
+                <div class="card-body">
+                    <div class="d-flex g-15">
+                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                    </div>
+                    <h5 class="card-title my-2">Lập trình PHP</h5>
+                    <hr>
+                    <div class="d-flex align-items-center g-15">
+                        <div class="btn-2">
+                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                        </div>
+                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                    </div>
+                </div>
+                <div class="hover-effect"></div>
+                <div class="btn-link">
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                </div>
+            </div>
+            <div class="card card-c product-item">
+                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/JAAV.png" alt="">
+                <div class="card-body">
+                    <div class="d-flex g-15">
+                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                    </div>
+                    <h5 class="card-title my-2">Lập trình Java nâng cao</h5>
+                    <hr>
+                    <div class="d-flex align-items-center g-15">
+                        <div class="btn-2">
+                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                        </div>
+                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                    </div>
+                </div>
+                <div class="hover-effect"></div>
+                <div class="btn-link">
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                </div>
+            </div>
+            <div class="card card-c product-item">
+                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/HTCS.jpg" alt="">
+                <div class="card-body">
+                    <div class="d-flex g-15">
+                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                    </div>
+                    <h5 class="card-title my-2">HTML5 và CSS3</h5>
+                    <hr>
+                    <div class="d-flex align-items-center g-15">
+                        <div class="btn-2">
+                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                        </div>
+                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                    </div>
+                </div>
+                <div class="hover-effect"></div>
+                <div class="btn-link">
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                </div>
+            </div>
+            <div class="card card-c product-item">
+                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ASNE.png" alt="">
+                <div class="card-body">
+                    <div class="d-flex g-15">
+                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                    </div>
+                    <h5 class="card-title my-2">Lập trình ASP.NET</h5>
+                    <hr>
+                    <div class="d-flex align-items-center g-15">
+                        <div class="btn-2">
+                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                        </div>
+                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                    </div>
+                </div>
+                <div class="hover-effect"></div>
+                <div class="btn-link">
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                </div>
+            </div>
+            <div class="card card-c product-item">
+                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/DBAV.png" alt="">
+                <div class="card-body">
+                    <div class="d-flex g-15">
+                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
+                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                    </div>
+                    <h5 class="card-title my-2">Lập trình PHP</h5>
+                    <hr>
+                    <div class="d-flex align-items-center g-15">
+                        <div class="btn-2">
+                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                        </div>
+                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                    </div>
+                </div>
+                <div class="hover-effect"></div>
+                <div class="btn-link">
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
+                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="./public/js/main.js"></script>

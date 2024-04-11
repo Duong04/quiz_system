@@ -12,6 +12,10 @@ html {
     scroll-behavior: smooth;
 }
 
+a {
+    cursor: pointer;
+}
+
 label {
     cursor: pointer;
 }
@@ -58,6 +62,61 @@ header {
     transform: translateX(-50%);
     bottom: 0;
     padding-bottom: 0;
+}
+
+.nav-child-2,
+.nav-child {
+    display: none;
+    height: auto !important;
+    padding: 10px;
+    min-width: 230px;
+    gap: 10px;
+    background-color: var(--white-color);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 0 4px #ccc;
+    top: 85px;
+    animation: opacity ease 0.5s;
+}
+
+.nav-child-2::before,
+.nav-child::before {
+    content: '';
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: -20px;
+    padding: 10px;
+}
+
+.nav-child-2 a,
+.nav-child-2 button,
+.nav-child a {
+    padding: 3px;
+    display: block;
+    font-size: 1.05rem;
+    transition: all ease 0.3s;
+}
+
+.nav-child-2 a:hover,
+.nav-child a:hover {
+    margin-left: 6px;
+} 
+
+.nav-parent-2:hover .nav-child-2,
+.nav-item:hover .nav-child {
+    display: flex;
+} 
+
+.nav-child-2 {
+    min-width: 200px;
+    left: -150px;
+    top: 65px;
+    cursor: pointer;
+}
+
+.nav-child-2::before {
+    height: 30px;
+    top: -30px;
 }
 
 .btn-carousel i {
@@ -321,21 +380,7 @@ header {
     transition: all ease 0.3s;
 }
 
-.card-c::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.2);
-    display: none;
-}
-
-.card-c:hover::before {
-    display: block;
-}
-
+.card-c:hover .btn-link span,
 .card-c:hover .btn-link a {
     display: flex;
 }
@@ -358,27 +403,28 @@ header {
 }
 
 .btn-link {
-    display: flex;
     position: absolute;
-    gap: 10px;
-    bottom: 50px;
-    left: 50%;
+    top: 0;
+    right: -15px;
     transform: translateX(-50%);
 }
 
+.btn-link span,
 .btn-link a {
     display: none;
     align-items: center;
     justify-content: center;
     height: 50px;
     width: 50px;
+    margin-top: 7px;
     border: 1px solid #1363DF;
     border-radius: 50%;
     color: #1363DF;
-    animation: moveUpC 0.4s ease;
+    animation: moveLeft 0.4s ease;
     transition: all ease 0.4s;
 }
 
+.btn-link span:hover,
 .btn-link a:hover {
     background-color: #1363DF;
     color: var(--white-color);
@@ -501,6 +547,16 @@ header {
     }
 }
 
+@keyframes moveLeft {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @keyframes rotate {
     from {
         transform: rotate(0);
@@ -527,6 +583,14 @@ header {
     }
 }
 
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }to {
+        opacity: 1;
+    }
+}
+
 @media (max-width: 62em) {
     .mt-250 {
         margin: 0px;
@@ -547,13 +611,17 @@ header {
 
 }
 
-@media (max-width: 61.875em) {
+@media (max-width: 61.9375em) {
     .bg-white-r {
         background-color: #fff;
     }
 
     .d-grid-4 {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-child {
+        display: none !important;
     }
 }
 
@@ -581,6 +649,14 @@ header {
     .d-grid-3 {
         grid-template-columns: repeat(1, 1fr);
     }
+}
+
+.navbar-nav .dropdown-menu-2 {
+    display: block;
+}
+
+.dropdown-menu-2.show {
+    display: none;
 }
 
 .slick-slide {

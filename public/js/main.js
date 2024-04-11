@@ -31,6 +31,7 @@ const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
+
 // -----------------------------------
 
 const collapse = document.querySelectorAll('.collapses');

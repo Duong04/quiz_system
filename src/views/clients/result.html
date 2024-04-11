@@ -1,0 +1,38 @@
+<div ng-controller="ResultController">
+    <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-image: url(./public/images/banner/breadcrumb_bg.jpg); background-position: center 70px;padding: 90px 0;">
+        <div class="breadcrumb-content py-5 container">
+            <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">Kết quả</h3>
+            <nav class="text-white wow fadeInLeft" data-wow-delay="0.4s" aria-label="breadcrumb">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a class="text-white fs-5 fw-medium nav-link" href="#!">Trang chủ</a></li>
+                    <i class="bi bi-chevron-right px-2"></i>
+                    <li class="breadcrumb-item active text-secondary fs-5 fw-medium" aria-current="page">Kết quả làm Quiz của bạn</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <section class="py-5">
+        <div class="container">
+            <div class="w-50 mx-auto text-center d-flex align-items-center justify-content-center flex-column" style="height: 150px; background-color: #E7EFFC;">
+                <h5>Số điểm bạn nhận được: {{marks}}/10</h5>
+                <h6>Trạng thái: {{statusQuiz}}</h6>
+            </div>
+            <div class="w-50 mx-auto g-25 d-flex align-items-center justify-content-center">
+                <button class="btn btn-primary my-3" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Xem kết quả của bạn</button>
+                <button class="btn btn-success my-3" ng-click="saveScore()">Lưu điểm của bạn</button>
+            </div>
+            <div class="collapse" id="collapseExample">
+                <h5>{{ courseName }}</h5>
+                <ul class="nav flex-column mt-2" ng-repeat="(index, item) in questions | limitTo:15">
+                    <h6>{{ index + 1 }}. {{ item.Text }}</h6>
+                    <li ng-repeat="answer in item.Answers" class="mt-2">
+                        <input class="form-check-input" type="radio" ng-value="answer.Id" ng-checked="userAnswers[index] == answer.Id">
+                        <label class="form-check-label mx-2 {{item.AnswerId == answer.Id ? 'text-success fw-bold' : ''}}">
+                            {{ answer.Text }}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

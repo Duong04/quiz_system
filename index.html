@@ -9,14 +9,21 @@
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./node_modules/wow.js/css/libs/animate.css">
     <link rel="stylesheet" href="./node_modules/aos/dist/aos.css">
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="./node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+      />
 </head>
 <body>
     <div class="mouse-trail"></div>
-    <main>
+    <main ng-app="app" ng-controller="main-controller">
         <header>
             <nav class="navbar navbar-expand-lg px-2 bg-white-r shadow">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="#!">
                         <img src="./public/images/logo/logo.png" class="w-100" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,758 +32,56 @@
                     <div class="collapse navbar-collapse justify-content-start justify-content-lg-end g-25" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link link-hv" aria-current="page" href="#">Trang chủ</a>
+                                <a class="nav-link link-hv" aria-current="page" href="#!">Trang chủ</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-parent nav-link link-hv position-relative dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Khóa học</a>
+                                <ul class="nav-child nav flex-column position-absolute" style="z-index: 99999;"> 
+                                    <li><a class="nav-link link-hv" href="#!khoa-hoc/all/page=0">Tất cả khóa học</a></li>
+                                    <li ng-repeat="category in categories"><a class="nav-link link-hv" href="#!khoa-hoc/{{category.id}}/page=0">{{category.name}}</a></li>
+                                </ul>
+                                <ul class="dropdown-menu nav show hide d-lg-none" style="z-index: 99999;"> 
+                                    <li><a class="nav-link link-hv" href="#!khoa-hoc/all/page=0">Tất cả khóa học</a></li>
+                                    <li ng-repeat="category in categories"><a class="nav-link link-hv" href="#!khoa-hoc/{{category.id}}/page=0">{{category.name}}</a></li>
+                                </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="./categories.html">Danh mục</a>
+                                <a class="nav-link link-hv" href="#!gioi-thieu">Giới thiệu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="./about.html">Giới thiệu</a>
+                                <a class="nav-link link-hv" href="#!lien-he">Liên hệ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="./contact.html">Liên hệ</a>
+                                <a class="nav-link link-hv" href="#!gop-y">Góp ý</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link link-hv" href="./feedback.html">Góp ý</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-hv" href="./ask.html">Hỏi đáp</a>
+                                <a class="nav-link link-hv" href="#!hoi-dap">Hỏi đáp</a>
                             </li>
                         </ul>
                         <form role="search" action="" class="d-lg-flex form-search col-12 col-lg-2 d-flex justify-content-between">
                             <input required type="text" placeholder="Tìm kiếm bài quiz...">
                             <button><i class="bi bi-search"></i></button>
                         </form>
-                        <div class="col-12 col-lg-2 d-flex justify-content-end g-2 mt-3 mt-lg-0" style="gap: 5px;">
-                            <a href="./login.html" class="btn btn-outline-primary btn-h">Đăng nhập</a>
-                            <a href="./register.html" class="btn btn-primary btn-h btn-none">Đăng ký</a>
+                        <div ng-hide="checkFullname" class="col-12 col-lg-2 d-flex justify-content-end g-2 mt-3 mt-lg-0" style="gap: 5px;">
+                            <a href="#!dang-nhap" class="btn btn-outline-primary btn-h">Đăng nhập</a>
+                            <a href="#!dang-ky" class="btn btn-primary btn-h btn-none">Đăng ký</a>
+                        </div>
+                        <div class="dropdown position-relative nav-parent-2" ng-show="checkFullname">
+                            <img width="40px" height="40px" class="rounded-circle object-fit-cover" src="./public/images/profile/image-profile.jpg" alt="">
+                            <ul class="nav-child-2 nav flex-column position-absolute" style="z-index: 99999;"> 
+                                <li><a class="nav-link link-hv" href="#!thong-tin-ca-nhan/{{userId}}">Thông tin tài khoản</a></li>
+                                <li><a class="nav-link link-hv" href="#!doi-mat-khau/{{userId}}">Đổi mật khẩu</a></li>
+                                <li><a class="nav-link link-hv" href="#!bang-diem/{{userId}}">Bảng điểm của bạn</a></li>
+                                <li><button class="nav-link link-hv" ng-click="logout()">Đăng xuất</button></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
-        <div class="banner h-auto w-100">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active h-640">
-                        <img src="./public/images/banner/banner_bg.jpg" class="d-block w-100 h-100" alt="">
-                        <div class="carousel-caption container row mx-auto h-100">
-                            <div class="text-center text-lg-start col-12 col-lg-6 py-5 h-100 d-flex flex-column justify-content-center g-20 position-relative">
-                                <img class="move-up-down" src="./public/images/icon/bshape_01.png" width="65px" alt="">
-                                <img class="position-absolute start-50" style="top: 150px;" width="50px" src="./public/images/icon/bshape_02.png" alt="">
-                                <div class="btn-1 wow fadeInLeft" data-wow-delay="0.2s">100% Satisfaction Guarantee</div>
-                                <h1 class="fs-1 text-black wow fadeInLeft" data-wow-delay="0.4s">
-                                    Học các <span class="text-primary">kỹ năng</span> từ những bài Quizz hàng đầu của chúng tôi.
-                                </h1>
-                                <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet consectetur adipiscing area we followelit.</p>
-                                <div class="d-flex g-25 mx-auto mx-lg-0">
-                                    <div class="btn btn-primary d-flex align-items-center g-5 fw-bolder wow fadeInLeft">
-                                        <span>Các bài Quizz</span> <i class="bi bi-arrow-right"></i>
-                                    </div>
-                                    <div class="d-flex align-items-center g-5">
-                                        <div>
-                                            <i class="bi bi-telephone-inbound fs-4"></i>
-                                        </div>
-                                        <div class="d-flex flex-column align-items-start">
-                                            <span class="text-color-grey fw-medium">
-                                                Have any Question?
-                                            </span>
-                                            <a href="tel:993-00-67777" class="text-link-b fw-bolder fs-5">
-                                                993-00-67777
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6 h-100 position-relative d-none d-lg-flex align-items-end">
-                                <div class="h-100 d-flex align-items-end">
-                                    <img class="w-100" src="./public/images/banner/banner_img.png" alt="">
-                                </div>
-                                <img data-wow-delay="0.2s" class="position-absolute wow fadeInLeft" style="bottom: 24%;" width="90px" src="./public/images/icon/bshape_04.png" alt="">
-                                <img data-wow-delay="0.4s" class="position-absolute wow fadeInDown" style="top: 120px; left: 100px;" width="90px" src="./public/images/icon/bshape_03.png" alt="">
-                                <img data-wow-delay="0.6s" class="position-absolute top-50 end-0 wow fadeInRight" width="90px" src="./public/images/icon/bshape_05.png" alt="">
-                                <div class="d-none-r bg-white px-3 py-2 position-absolute text-center rounded-4" style="top: 40%; left: 50px;">
-                                    <div class="btn-green rounded-circle py-2">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="mt-1 text-black">Tổng sinh viên</div>
-                                    <div class="fw-bold text-link-b" style="font-size: 1.5rem;">15k</div>
-                                </div>
-                                <div class="d-none-r bg-white px-3 py-2 position-absolute text-center rounded-4 end-0" style="bottom: 50px;">
-                                    <div class="btn-purple rounded-circle py-2">
-                                        <i class="bi bi-mortarboard-fill"></i>
-                                    </div>
-                                    <div class="mt-1 text-black">Đã hoàn thành</div>
-                                    <div class="fw-bold text-link-b" style="font-size: 1.5rem;">35k</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item h-640">
-                        <img src="./public/images/banner/banner-2.jpg" class="d-block w-100 h-100 object-fit-cover" alt="">
-                        <div class="carousel-caption container row mx-auto h-100">
-                            <div class="text-center text-lg-start col-12 col-lg-6 py-5 h-100 d-flex flex-column justify-content-center g-20 position-relative">
-                                <img class="move-up-down" src="./public/images/icon/bshape_01.png" width="65px" alt="">
-                                <img class="position-absolute start-50" style="top: 150px;" width="50px" src="./public/images/icon/bshape_02.png" alt="">
-                                <div class="btn-1 wow fadeInLeft" data-wow-delay="0.2s">100% Satisfaction Guarantee</div>
-                                <h1 class="fs-1 wow fadeInLeft" data-wow-delay="0.4s">
-                                    Học các <span class="text-primary">kỹ năng</span> từ những bài Quizz hàng đầu của chúng tôi.
-                                </h1>
-                                <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet consectetur adipiscing area we followelit.</p>
-                                <div class="d-flex g-25 mx-auto mx-lg-0">
-                                    <div class="btn btn-primary d-flex align-items-center g-5 fw-bolder wow fadeInLeft">
-                                        <span>Các bài Quizz</span> <i class="bi bi-arrow-right"></i>
-                                    </div>
-                                    <div class="d-flex align-items-center g-5">
-                                        <div>
-                                            <i class="bi bi-telephone-inbound fs-4"></i>
-                                        </div>
-                                        <div class="d-flex flex-column align-items-start">
-                                            <span class="text-color-grey fw-medium">
-                                                Have any Question?
-                                            </span>
-                                            <a href="tel:993-00-67777" class="text-link-b fw-bolder fs-5">
-                                                993-00-67777
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6 h-100 position-relative d-none d-lg-flex align-items-end">
-                                <div class="h-100 d-flex align-items-end">
-                                    <img class="w-100" src="./public/images/banner/banner_img.png" alt="">
-                                </div>
-                                <img data-wow-delay="0.2s" class="position-absolute wow fadeInLeft" style="bottom: 24%;" width="90px" src="./public/images/icon/bshape_04.png" alt="">
-                                <img data-wow-delay="0.4s" class="position-absolute wow fadeInDown" style="top: 120px; left: 100px;" width="90px" src="./public/images/icon/bshape_03.png" alt="">
-                                <img data-wow-delay="0.6s" class="position-absolute top-50 end-0 wow fadeInRight" width="90px" src="./public/images/icon/bshape_05.png" alt="">
-                                <div class="d-none-r bg-white px-3 py-2 position-absolute text-center rounded-4" style="top: 40%; left: 50px;">
-                                    <div class="btn-green rounded-circle py-2">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="mt-1 text-black">Tổng sinh viên</div>
-                                    <div class="fw-bold text-link-b" style="font-size: 1.5rem;">15k</div>
-                                </div>
-                                <div class="d-none-r bg-white px-3 py-2 position-absolute text-center rounded-4 end-0" style="bottom: 50px;">
-                                    <div class="btn-purple rounded-circle py-2">
-                                        <i class="bi bi-mortarboard-fill"></i>
-                                    </div>
-                                    <div class="mt-1 text-black">Đã hoàn thành</div>
-                                    <div class="fw-bold text-link-b" style="font-size: 1.5rem;">35k</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item h-640">
-                        <img src="./public/images/banner/banner-3.jpg" class="d-block w-100 h-100" alt="">
-                        <div class="carousel-caption container row mx-auto h-100">
-                            <div class="text-center text-lg-start col-12 col-lg-6 py-5 h-100 d-flex flex-column justify-content-center g-20 position-relative">
-                                <img class="move-up-down" src="./public/images/icon/bshape_01.png" width="65px" alt="">
-                                <img class="position-absolute start-50" style="top: 150px;" width="50px" src="./public/images/icon/bshape_02.png" alt="">
-                                <div class="btn-1 wow fadeInLeft" data-wow-delay="0.2s">100% Satisfaction Guarantee</div>
-                                <h1 class="fs-1 text-black wow fadeInLeft" data-wow-delay="0.4s">
-                                    Học các <span class="text-primary">kỹ năng</span> từ những bài Quizz hàng đầu của chúng tôi.
-                                </h1>
-                                <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet consectetur adipiscing area we followelit.</p>
-                                <div class="d-flex g-25 mx-auto mx-lg-0">
-                                    <div class="btn btn-primary d-flex align-items-center g-5 fw-bolder wow fadeInLeft">
-                                        <span>Các bài Quizz</span> <i class="bi bi-arrow-right"></i>
-                                    </div>
-                                    <div class="d-flex align-items-center g-5">
-                                        <div>
-                                            <i class="bi bi-telephone-inbound fs-4"></i>
-                                        </div>
-                                        <div class="d-flex flex-column align-items-start">
-                                            <span class="text-color-grey fw-medium">
-                                                Have any Question?
-                                            </span>
-                                            <a href="tel:993-00-67777" class="text-link-b fw-bolder fs-5">
-                                                993-00-67777
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6 h-100 position-relative d-none d-lg-flex align-items-end">
-                                <div class="h-100 d-flex align-items-end">
-                                    <img class="w-100" src="./public/images/banner/banner_img.png" alt="">
-                                </div>
-                                <img data-wow-delay="0.2s" class="position-absolute wow fadeInLeft" style="bottom: 24%;" width="90px" src="./public/images/icon/bshape_04.png" alt="">
-                                <img data-wow-delay="0.4s" class="position-absolute wow fadeInDown" style="top: 120px; left: 100px;" width="90px" src="./public/images/icon/bshape_03.png" alt="">
-                                <img data-wow-delay="0.6s" class="position-absolute top-50 end-0 wow fadeInRight" width="90px" src="./public/images/icon/bshape_05.png" alt="">
-                                <div class="d-none-r bg-white px-3 py-2 position-absolute text-center rounded-4" style="top: 40%; left: 50px;">
-                                    <div class="btn-green rounded-circle py-2">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="mt-1 text-black">Tổng sinh viên</div>
-                                    <div class="fw-bold text-link-b" style="font-size: 1.5rem;">15k</div>
-                                </div>
-                                <div class="d-none-r bg-white px-3 py-2 position-absolute text-center rounded-4 end-0" style="bottom: 50px;">
-                                    <div class="btn-purple rounded-circle py-2">
-                                        <i class="bi bi-mortarboard-fill"></i>
-                                    </div>
-                                    <div class="mt-1 text-black">Đã hoàn thành</div>
-                                    <div class="fw-bold text-link-b" style="font-size: 1.5rem;">35k</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn-carousel carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                <button class="btn-carousel carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-              </div>
+        <div ng-view>
+            
         </div>
-        <div class="container-md d-flex justify-content-between align-items-center g-50 py-5 overflow-auto">
-            <div class="col-3 col-lg wow fadeInUp" data-wow-delay="0.1s">
-                <img class="filter-scale" width="100%" src="./public/images/icon_source/brand01.png" alt="">
-            </div>
-            <div class="col-3 col-lg wow fadeInUp" data-wow-delay="0.2s">
-                <img class="filter-scale" width="100%" src="./public/images/icon_source/brand02.png" alt="">
-            </div>
-            <div class="col-3 col-lg wow fadeInUp" data-wow-delay="0.3s">
-                <img class="filter-scale" width="100%" src="./public/images/icon_source/brand03.png" alt="">
-            </div>
-            <div class="col-3 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                <img class="filter-scale" width="100%" src="./public/images/icon_source/brand04.png" alt="">
-            </div>
-            <div class="col-3 col-lg wow fadeInUp" data-wow-delay="0.5s">
-                <img class="filter-scale" width="100%" src="./public/images/icon_source/brand05.png" alt="">
-            </div>
-            <div class="col-3 col-lg wow fadeInUp" data-wow-delay="0.6s">
-                <img class="filter-scale" width="100%" src="./public/images/icon_source/brand06.png" alt="">
-            </div>
-            <div class="col-3 col-lg wow fadeInUp" data-wow-delay="0.7s">
-                <img class="filter-scale" width="100%" src="./public/images/icon_source/brand07.png" alt="">
-            </div>
-        </div>
-        <section class="px-0 py-5 p-md-5" style="background-color: #F4F7FB;">
-            <div class="container-md">
-                <div class="btn-1" style="width: 250px;">
-                    Chào mừng bạn đến với các bài Quizz
-                </div>
-                <div class="d-flex justify-content-between flex-column flex-lg-row">
-                    <div class="fs-2 fw-bolder">Các danh mục <span class="text-primary">nổi bật</span>!</div>
-                    <ul class="nav nav-tabs" style="border: none;">
-                        <li class="nav-item"><a class="nav-link fw-semibold active" id="home-tab" data-bs-toggle="tab" href="#tab-1">SQL Server</a></li>
-                        <li class="nav-item"><a class="nav-link fw-semibold" id="menu1-tab" data-bs-toggle="tab" href="#tab-2">Lập trình PHP</a></li>
-                        <li class="nav-item"><a class="nav-link fw-semibold" id="menu2-tab" data-bs-toggle="tab" href="#tab-3">Lập trình game 2D</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="container mt-3">
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show active">
-                        <div class="d-grid-4">        
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.1s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ADAV.jpg" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình Android nâng cao</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.2s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/PHPP.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình PHP</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.3s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/JAAV.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình Java nâng cao</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.4s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/HTCS.jpg" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">HTML5 và CSS3</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.5s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ASNE.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình ASP.NET</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.6s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/DBAV.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình PHP</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab-2" class="tab-pane fade show">
-                        <div class="d-grid-4">        
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.1s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/LAYO.jpg" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình PHP</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.2s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/WEBU.jpg" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Xây dựng trang web</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.3s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/VBPR.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình VB.NET</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.4s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/MOWE.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Thiết kế web cho điện thoại di động</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.5s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ASNE.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình ASP.NET</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.6s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/DBAV.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình PHP</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab-3" class="tab-pane fade show">
-                        <div class="d-grid-4">        
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.1s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ADBS.jpg" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình Android cơ bản</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.2s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/DBAV.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình PHP</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.3s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/ADUI.jpg" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình PHP</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.4s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/GAME.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình game 2D</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.5s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/CLCO.jpg" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Điện toán đám mây</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                            <div class="card card-c product-item wow fadeInUp" data-wow-delay="0.6s">
-                                <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/JSPR.png" alt="">
-                                <div class="card-body">
-                                    <div class="d-flex g-15">
-                                        <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 10 Câu hỏi</div>
-                                        <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
-                                    </div>
-                                    <h5 class="card-title my-2">Lập trình PHP</h5>
-                                    <hr>
-                                    <div class="d-flex align-items-center g-15">
-                                        <div class="btn-2">
-                                            <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
-                                        </div>
-                                        <span class="fw-medium text-link-b">FPT Polytechnic</span>
-                                    </div>
-                                </div>
-                                <div class="hover-effect"></div>
-                                <div class="btn-link">
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Xem chi tiết" href=""><i class="bi bi-eye"></i></a>
-                                    <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bắt đầu ngay" href=""><i class="bi bi-skip-start"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="py-5 bg-white">
-            <div class="container d-flex justify-content-between flex-wrap align-items-center g-20">
-                <div class="col-12 col-lg-5 py-2">
-                    <div class="btn-1 wow fadeInLeft" data-wow-delay="0.2s">Làm Quizz trực tuyến độc đáo</div>
-                    <h2 class="fw-bolder mt-3 wow fadeInLeft" data-wow-delay="0.3s">DUYỆT THEO <span class="text-primary">DANH MỤC</span></h2>
-                    <div class="text-color-grey mt-2 wow fadeInLeft" data-wow-delay="0.4s">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim natus debitis officiis cum, quo reiciendis facere magnam laboriosam, repellat omnis nobis? Veritatis distinctio laboriosam dolorum a earum non dolor. Possimus.
-                    </div>
-                    <a href="" class="btn btn-primary fw-medium py-2 mt-4 wow fadeInLeft" data-wow-delay="0.5s">Tất cả các danh mục <i class="bi bi-arrow-right"></i></a>
-                </div>
-                <div class="col-12 col-lg-6 d-flex justify-content-center flex-wrap-reverse g-20">
-                    <div class="card pt-4 pb-1 border-0 wow fadeInUp" data-wow-delay="0.1s" style="background-color: #F4F7FB; width: 200px;">
-                        <a href="#" class="card-img btn-card mx-auto">
-                            <i class="bi bi-amd fs-4"></i>
-                        </a>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Cơ sở dữ liệu</h5>
-                            <div class="card-text">
-                                10 bài
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card pt-4 pb-1 border-0 wow fadeInUp" data-wow-delay="0.2s" style="background-color: #F4F7FB; width: 200px;">
-                        <a href="#" class="card-img btn-card mx-auto">
-                            <i class="bi bi-filetype-java fs-4"></i>
-                        </a>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Lập trình JAVA</h5>
-                            <div class="card-text">
-                                10 bài
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card pt-4 pb-1 border-0 wow fadeInUp" data-wow-delay="0.3s" style="background-color: #F4F7FB; width: 200px;">
-                        <a href="#" class="card-img btn-card mx-auto">
-                            <i class="bi bi-filetype-html fs-4"></i>
-                        </a>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Xây dựng trang web</h5>
-                            <div class="card-text">
-                                10 bài
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card pt-4 pb-1 border-0 wow fadeInUp" data-wow-delay="0.4s" style="background-color: #F4F7FB; width: 200px;">
-                        <a href="#" class="card-img btn-card mx-auto">
-                            <i class="bi bi-filetype-php fs-4"></i>
-                        </a>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Lập trình PHP</h5>
-                            <div class="card-text">
-                                10 bài
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card pt-4 pb-1 border-0 wow fadeInUp" data-wow-delay="0.5s" style="background-color: #F4F7FB; width: 200px;">
-                        <a href="#" class="card-img btn-card mx-auto">
-                            <i class="bi bi-controller fs-4"></i>
-                        </a>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Lập trình GAME</h5>
-                            <div class="card-text">
-                                10 bài
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="py-5" style="background-color: #F4F7FB;">
-            <div class="container p-5 rounded position-relative overflow-hidden" style="background-color: #1363DF;">
-                <div class="container py-2 justify-content-center g-20 d-flex align-items-center flex-wrap">
-                    <h4 class="col-12 col-lg-3 text-white">Tham gia với chúng tôi và lan tỏa kinh nghiệm</h4>
-                    <div class="col-12 col-lg-5 text-white">
-                        Borem ipsum dolor sit amet, consectetur adipiscing eliawe awUt elit ellus, luctus nec ullamcorper mattisBorem
-                    </div>
-                    <div class="col-12 col-lg-3 btn-white fw-medium fs-6">
-                        Trở thành giáo viên
-                    </div>
-                </div>
-                <img class="position-absolute start-0" style="top: -30px;" src="./public/images/icon/cta_shape01.svg" alt="">
-                <img class="position-absolute end-0" src="./public/images/icon/cta_shape02.svg" alt="">
-            </div>
-        </section>
-        <section class="p-5 bg-white">
-            <div class="container d-flex justify-content-between g-15 flex-wrap align-items-center">
-                <div class="col-12 col-lg-5 d-flex align-items-center flex-wrap-reverse g-5">
-                    <img src="./public/images/banner/newsletter.png" class="w-100 w-lg-75 wow fadeInUp" data-wow-delay="0.3s" alt="">
-                    <h5 class="fw-bolder fs-4 wow fadeInLeft" data-wow-delay="0.3s" style="width: 250px;">Hãy tham gia Bản tin của chúng tôi!</h5>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <form class="input-group input-group-c d-flex align-items-center rounded-pill">
-                        <input required type="text" class="form-control" placeholder="Email của bạn" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <button class="btn btn-primary input-group-text btn-c rounded-pill" id="basic-addon2">Đăng ký ngay</button>                 
-                    </form>
-                </div>
-            </div>
-        </section>
         <footer class="footer">
             <section class="py-4 py-md-5 py-xl-8 border-top border-light">
                 <div class="container overflow-hidden">
@@ -895,8 +200,25 @@
     </main>
     <a href="#" class="link-change btn btn-primary position-fixed fs-4 fw-bold" style="bottom: 40px; right: 20px;"><i class="bi bi-chevron-double-up"></i></a>
     <script src="./node_modules/wow.js/dist/wow.min.js"></script>
-    <script src="../bootstrap/jquery-3.5.1.slim.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script src="./public/js/main.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/angular-route/angular-route.min.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script type="module" src="./src/main.js"></script>
 </body>
 </html>

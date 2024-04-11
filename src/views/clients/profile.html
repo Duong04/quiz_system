@@ -1,0 +1,59 @@
+<div ng-controller="ProfileController">
+    <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-image: url(./public/images/banner/breadcrumb_bg.jpg); background-position: center 70px;padding: 90px 0;">
+        <div class="breadcrumb-content py-5 container">
+            <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">Thông tin của bạn</h3>
+            <nav class="text-white wow fadeInLeft" data-wow-delay="0.4s" aria-label="breadcrumb">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a class="text-white fs-5 fw-medium nav-link" href="#">Trang chủ</a></li>
+                    <i class="bi bi-chevron-right px-2"></i>
+                    <li class="breadcrumb-item active text-secondary fs-5 fw-medium" aria-current="page">Thông tin cá nhân</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <section class="py-5" style="background-color: #E7EFFC;">
+        <div class="container">
+            <div class="mx-auto border bg-white p-5 rounded" style="width: 800px;">
+                <h5 class="pb-4">Thông tin cá nhân</h5>
+                <div class="d-flex justify-content-between">
+                    <div class="col-3 position-relative d-flex justify-content-center border-end">
+                        <img src="./public/images/profile/image-profile.jpg" width="130px" height="130px" class="rounded-circle" alt="">
+                        <label for="image" class="position-absolute d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; border-radius: 50%; background-color: #ccc; right: 35px; top: 100px; cursor: pointer;">
+                            <i class="bi bi-camera-fill"></i>
+                        </label>
+                        <input hidden type="file" id="image">
+                    </div>
+                    <div class="col-9 px-5">
+                        <form name="myForm" class="row" novalidate>
+                            <div class="mb-4 col-12">
+                                <label for="fullName" class="form-label">Họ và tên</label>
+                                <input required type="Text" class="form-control" id="name" placeholder="Họ và tên của bạn" name="fullname" ng-model="fullname">
+                                <span ng-show="myForm.fullname.$touched && myForm.fullname.$error.required" class="text-danger">Trường họ và tên không được để trống!</span>
+                            </div>
+                            <div class="mb-4 col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input required type="email" class="form-control" id="email" placeholder="Email của bạn" name="email" ng-model="email">
+                                <span ng-show="myForm.email.$touched && myForm.email.$error.required" class="text-danger">Trường email không được để trống!</span>
+                                <span ng-show="myForm.email.$error.email" class="text-danger">Email của bạn không hợp lệ!</span>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <label for="psw" class="form-label">Mật khẩu hiện tại</label>
+                                <input minlength="6" type="password" class="form-control" id="password" placeholder="Mật khẩu" minlength="6" name="password" ng-model="password" required>
+                                <span ng-show="myForm.password.$touched && myForm.password.$error.required" class="text-danger">Trường mật khẩu không được để trống!</span>
+                                <span ng-show="myForm.password.$error.minlength" class="text-danger">Độ dài mật khẩu phải lớn hơn 6!</span>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <label for="psw" class="form-label">Mật khẩu mới</label>
+                                <input minlength="6" type="password" id="psw" class="form-control" name="newPassword" ng-model="newPassword" placeholder="Mật khẩu mới" required>
+                                <span ng-show="myForm.newPassword.$error.minlength" class="text-danger">Độ dài mật khẩu phải lớn hơn 6!</span>
+                            </div>
+                            <div class="mn-3 col-3">
+                                <button ng-click="submitForm()" ng-disabled="myForm.password.$invalid || myForm.email.$invalid || myForm.fullname.$invalid" class="btn btn-primary">Cập nhật</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

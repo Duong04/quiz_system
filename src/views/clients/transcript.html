@@ -1,0 +1,48 @@
+<div ng-controller="TranscriptController">
+    <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-image: url(./public/images/banner/breadcrumb_bg.jpg); background-position: center 70px;padding: 90px 0;">
+        <div class="breadcrumb-content py-5 container">
+            <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">Bảng điểm của bạn</h3>
+            <nav class="text-white wow fadeInLeft" data-wow-delay="0.4s" aria-label="breadcrumb">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a class="text-white fs-5 fw-medium nav-link" href="#">Trang chủ</a></li>
+                    <i class="bi bi-chevron-right px-2"></i>
+                    <li class="breadcrumb-item active text-secondary fs-5 fw-medium" aria-current="page">Bảng điểm</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <section class="py-5">
+        <div class="container mx-auto d-flex align-items-center flex-column" ng-if="quizScores.length == 0">
+            <h3>Bạn chưa làm bài quiz nào hết</h3>
+            <img src="/public/images/30678433300a8f131280ab38a4bcc05f-removebg-preview.png" alt="">
+        </div>
+        <div ng-if="quizScores.length > 0" class="container col col-lg-8 mx-auto table-responsive">
+            <h3 class="text-center py-2">Bảng điểm của bạn</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Stt</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Tên khóa học</th>
+                        <th scope="col">Điểm</th>
+                        <th scope="col">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(index, item) in quizScores">
+                        <th scope="row">{{ index+1 }}</th>
+                        <td>{{ item.fullname }}</td>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.courseName }}</td>
+                        <td>{{ item.score }}</td>
+                        <th>
+                            <span ng-if="item.score >= 5" class="text-success">Đạt</span>
+                            <span ng-if="item.score < 5" class="text-danger">Không đạt</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
