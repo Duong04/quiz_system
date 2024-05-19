@@ -1,0 +1,52 @@
+<div ng-controller="SearchController">
+    <div class="banner breadcrumb-bg h-auto w-100 position-relative z-3" style="background-image: url(./public/images/banner/breadcrumb_bg.jpg); background-position: center 70px;padding: 90px 0;">
+        <div class="breadcrumb-content py-5 container">
+            <h3 class="title text-white wow fadeInLeft" data-wow-delay="0.2s">Tìm kiếm</h3>
+            <nav class="text-white wow fadeInLeft" data-wow-delay="0.4s">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a class="text-white fs-5 fw-medium nav-link" href="#">Trang chủ</a></li>
+                    <i class="bi bi-chevron-right px-2"></i>
+                    <li class="breadcrumb-item active text-secondary fs-5 fw-medium" aria-current="page">Tìm kiểm khóa học</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <section class="px-0 py-5 p-md-5" style="background-color: #F4F7FB;">
+        <div class="container-md">
+            <div class="btn-1" style="width: 250px;">
+                Kết quả tìm kiểm {{countCourses}}
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show active">
+                    <div class="d-grid-4">      
+                        <div ng-repeat="course in courses | filter:data" class="card card-c product-item wow fadeInUp" data-wow-delay="0.2s">
+                            <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/{{course.Logo}}" alt="">
+                            <div class="card-body">
+                                <div class="d-flex g-15">
+                                    <div class="card-item text-color-grey"><i class="bi bi-question-circle"></i> 15 Câu hỏi</div>
+                                    <div class="card-item text-color-grey"><i class="bi bi-clock"></i> 10 Phút</div>
+                                </div>
+                                <h5 class="card-title my-2">{{course.Name}}</h5>
+                                <hr>
+                                <div class="d-flex align-items-center g-15">
+                                    <div class="btn-2">
+                                        <img class="w-100 object-fit-cover rounded-pill" src="./public/images/logo/download.png" alt="">
+                                    </div>
+                                    <span class="fw-medium text-link-b">FPT Polytechnic</span>
+                                </div>
+                            </div>
+                            <div class="hover-effect"></div>
+                            <div class="btn-link">
+                                <a class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Xem chi tiết" href="#!chi-tiet-khoa-hoc/{{course.Id}}"><i class="bi bi-eye"></i></a>
+                                <a ng-show="checkFullname" class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Bắt đầu ngay" ng-click="confirm(course.Id)"><i class="bi bi-skip-start"></i></a>
+                                <span ng-hide="checkFullname" ng-click="btnWarning()" class="fs-5 fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Bắt đầu ngay"><i class="bi bi-skip-start"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

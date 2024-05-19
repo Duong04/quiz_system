@@ -12,7 +12,7 @@
                             <h1 class="fs-1 text-black wow fadeInLeft" data-wow-delay="0.4s">
                                 Học các <span class="text-primary">kỹ năng</span> từ những bài Quizz hàng đầu của chúng tôi.
                             </h1>
-                            <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet consectetur adipiscing area we followelit.</p>
+                            <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Tham gia vào một bộ sưu tập khổng lồ các câu đố được thiết kế để kiểm tra kiến thức của bạn, thách thức tư duy của bạn và mở rộng tầm nhìn của bạn.</p>
                             <div class="d-flex g-25 mx-auto mx-lg-0">
                                 <div class="btn btn-primary d-flex align-items-center g-5 fw-bolder wow fadeInLeft">
                                     <span>Các bài Quizz</span> <i class="bi bi-arrow-right"></i>
@@ -66,7 +66,7 @@
                             <h1 class="fs-1 wow fadeInLeft" data-wow-delay="0.4s">
                                 Học các <span class="text-primary">kỹ năng</span> từ những bài Quizz hàng đầu của chúng tôi.
                             </h1>
-                            <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet consectetur adipiscing area we followelit.</p>
+                            <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Tham gia vào một bộ sưu tập khổng lồ các câu đố được thiết kế để kiểm tra kiến thức của bạn, thách thức tư duy của bạn và mở rộng tầm nhìn của bạn.</p>
                             <div class="d-flex g-25 mx-auto mx-lg-0">
                                 <div class="btn btn-primary d-flex align-items-center g-5 fw-bolder wow fadeInLeft">
                                     <span>Các bài Quizz</span> <i class="bi bi-arrow-right"></i>
@@ -120,7 +120,7 @@
                             <h1 class="fs-1 text-black wow fadeInLeft" data-wow-delay="0.4s">
                                 Học các <span class="text-primary">kỹ năng</span> từ những bài Quizz hàng đầu của chúng tôi.
                             </h1>
-                            <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet consectetur adipiscing area we followelit.</p>
+                            <p class="fw-semibold text-color-grey lh-base wow fadeInLeft" data-wow-delay="0.6s">Tham gia vào một bộ sưu tập khổng lồ các câu đố được thiết kế để kiểm tra kiến thức của bạn, thách thức tư duy của bạn và mở rộng tầm nhìn của bạn.</p>
                             <div class="d-flex g-25 mx-auto mx-lg-0">
                                 <div class="btn btn-primary d-flex align-items-center g-5 fw-bolder wow fadeInLeft">
                                     <span>Các bài Quizz</span> <i class="bi bi-arrow-right"></i>
@@ -204,8 +204,8 @@
             <div class="d-flex justify-content-between flex-column flex-lg-row">
                 <div class="fs-2 fw-bolder">Các danh mục <span class="text-primary">nổi bật</span>!</div>
                 <ul class="nav nav-tabs" style="border: none;">
-                    <li class="nav-item"><a class="nav-link fw-semibold active" id="home-tab" data-bs-toggle="tab" href="#tab-1">Khóa học Android</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold" id="menu1-tab" data-bs-toggle="tab" href="#tab-2">Khóa học Lập trình Web</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold active" id="home-tab" data-bs-toggle="tab" href="#tab-1">Khóa học Lập trình Web</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" id="menu1-tab" data-bs-toggle="tab" href="#tab-2">Khóa học Android</a></li>
                     <li class="nav-item"><a class="nav-link fw-semibold" id="menu2-tab" data-bs-toggle="tab" href="#tab-3">Khóa học DotNet</a></li>
                 </ul>
             </div>
@@ -214,7 +214,7 @@
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show active">
                     <div class="d-grid-4">        
-                        <div ng-repeat="course in courses | filter: {Category_id: 'CAT_ANDROID'}" class="card card-c product-item wow fadeInUp" data-wow-delay="0.1s">
+                        <div ng-repeat="course in courses | filter: {Category_id: 'CAT_WEB'} | limitTo : 6" class="card card-c product-item wow fadeInUp" data-wow-delay="0.1s">
                             <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/{{course.Logo}}" alt="">
                             <div class="card-body">
                                 <div class="d-flex g-15">
@@ -241,7 +241,7 @@
                 </div>
                 <div id="tab-2" class="tab-pane fade show">
                     <div class="d-grid-4">        
-                        <div ng-repeat="course in courses | filter: {Category_id: 'CAT_WEB'} | limitTo : 6" class="card card-c product-item wow fadeInUp" data-wow-delay="0.1s">
+                        <div ng-repeat="course in courses | filter: {Category_id: 'CAT_ANDROID'}" class="card card-c product-item wow fadeInUp" data-wow-delay="0.1s">
                             <img class="w-100 card-img-top py-2 object-fit-contain" height="200px" src="./public/images/logos/{{course.Logo}}" alt="">
                             <div class="card-body">
                                 <div class="d-flex g-15">
@@ -302,7 +302,7 @@
                 <div class="btn-1 wow fadeInLeft" data-wow-delay="0.2s">Làm Quizz trực tuyến độc đáo</div>
                 <h2 class="fw-bolder mt-3 wow fadeInLeft" data-wow-delay="0.3s">DUYỆT THEO <span class="text-primary">DANH MỤC</span></h2>
                 <div class="text-color-grey mt-2 wow fadeInLeft" data-wow-delay="0.4s">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim natus debitis officiis cum, quo reiciendis facere magnam laboriosam, repellat omnis nobis? Veritatis distinctio laboriosam dolorum a earum non dolor. Possimus.
+                    Trải nghiệm sự hồi hộp khi học tập và sự hài lòng khi thành thạo các khái niệm mới với các câu đố kích thích của chúng tôi.
                 </div>
                 <a href="" class="btn btn-primary fw-medium py-2 mt-4 wow fadeInLeft" data-wow-delay="0.5s">Tất cả các danh mục <i class="bi bi-arrow-right"></i></a>
             </div>
@@ -370,7 +370,7 @@
             <div class="container py-2 justify-content-center g-20 d-flex align-items-center flex-wrap">
                 <h4 class="col-12 col-lg-3 text-white">Tham gia với chúng tôi và lan tỏa kinh nghiệm</h4>
                 <div class="col-12 col-lg-5 text-white">
-                    Borem ipsum dolor sit amet, consectetur adipiscing eliawe awUt elit ellus, luctus nec ullamcorper mattisBorem
+                    Kiểm tra kỹ năng của bạn, khám phá tài năng tiềm ẩn và bắt đầu hành trình tự khám phá với các câu đố hấp dẫn của chúng tôi.
                 </div>
                 <div class="col-12 col-lg-3 btn-white fw-medium fs-6">
                     Trở thành giáo viên

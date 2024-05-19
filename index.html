@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./node_modules/wow.js/css/libs/animate.css">
-    <link rel="stylesheet" href="./node_modules/aos/dist/aos.css">
-    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
-    <link rel="stylesheet" href="./node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/public/library/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/library/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/public/library/wow.js/css/libs/animate.css">
+    <link rel="stylesheet" href="/public/library/animate.css/animate.min.css">
+    <link rel="stylesheet" href="/public/library/sweetalert2/dist/sweetalert2.min.css">
     <link
         rel="stylesheet"
         type="text/css"
@@ -58,9 +57,9 @@
                                 <a class="nav-link link-hv" href="#!hoi-dap">Hỏi đáp</a>
                             </li>
                         </ul>
-                        <form role="search" action="" class="d-lg-flex form-search col-12 col-lg-2 d-flex justify-content-between">
-                            <input required type="text" placeholder="Tìm kiếm bài quiz...">
-                            <button><i class="bi bi-search"></i></button>
+                        <form name="myForm" role="search" class="d-lg-flex form-search position-relative col-12 col-lg-2 d-flex justify-content-between">
+                            <input ng-model="search" required autocomplete="off" name="data" type="text" placeholder="Tìm kiếm bài quiz...">
+                            <button ng-click="submitForm()" ng-disabled="myForm.$invalid"><i class="bi bi-search"></i></button>
                         </form>
                         <div ng-hide="checkFullname" class="col-12 col-lg-2 d-flex justify-content-end g-2 mt-3 mt-lg-0" style="gap: 5px;">
                             <a href="#!dang-nhap" class="btn btn-outline-primary btn-h">Đăng nhập</a>
@@ -133,7 +132,7 @@
                         <div class="col-12 col-lg-3 col-xl-4">
                             <div class="widget text-white">
                                 <h4 class="widget-title mb-4">Our Newsletter</h4>
-                                <p class="mb-4">Subscribe to our newsletter to get our news & discounts delivered to you.</p>
+                                <p class="mb-4">Đăng ký nhận bản tin của chúng tôi để nhận tin tức và giảm giá của chúng tôi được gửi đến bạn.</p>
                                 <form action="#!">
                                     <div class="row gy-4">
                                         <div class="col-12">
@@ -199,9 +198,9 @@
         </footer>
     </main>
     <a href="#" class="link-change btn btn-primary position-fixed fs-4 fw-bold" style="bottom: 40px; right: 20px;"><i class="bi bi-chevron-double-up"></i></a>
-    <script src="./node_modules/wow.js/dist/wow.min.js"></script>
-    <script src="./node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/library/wow.js/dist/wow.min.js"></script>
+    <script src="/public/library/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/public/library/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script
       type="text/javascript"
       src="https://code.jquery.com/jquery-1.11.0.min.js"
@@ -215,10 +214,10 @@
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="./public/js/main.js"></script>
-    <script src="./node_modules/angular/angular.min.js"></script>
-    <script src="./node_modules/angular-route/angular-route.min.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
-    <script src="./node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="/public/library/angular/angular.min.js"></script>
+    <script src="/public/library/angular-route/angular-route.min.js"></script>
+    <script src="/public/library/axios/dist/axios.min.js"></script>
+    <script src="/public/library/sweetalert2/dist/sweetalert2.min.js"></script>
     <script type="module" src="./src/main.js"></script>
 </body>
 </html>

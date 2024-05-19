@@ -41,7 +41,10 @@ const route = (app) => {
                 templateUrl: 'src/views/clients/profile.html'
             })
             .when('/bang-diem/:id', {
-                templateUrl: '/src/views/clients/transcript.html'
+                templateUrl: 'src/views/clients/transcript.html'
+            })
+            .when('/tim-kiem/:data', {
+                templateUrl: 'src/views/clients/search.html'
             })
             .otherwise({
                 redirectTo: '/'

@@ -13,10 +13,10 @@ const categoryController = (app) => {
                 $scope.courses = response.data;
                 if ($scope.categoryId !== 'all') { 
                     $scope.newCourses = $scope.courses.filter(course => course.Category_id === $scope.categoryId);
-                    $scope.count =Math.round($scope.newCourses.length / 6);
+                    $scope.count = Math.round($scope.newCourses.length / 6);
                 } else { 
                     $scope.newCourses = $scope.courses;
-                    $scope.count =Math.round($scope.newCourses.length / 6);
+                    $scope.count = Math.round($scope.newCourses.length / 6);
                 }
             });
             $http.get("../../../db/Categories.js")

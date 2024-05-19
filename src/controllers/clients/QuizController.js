@@ -100,11 +100,7 @@ const quizController = (app) => {
                 }
             }
 
-            let percentage = (score / 15) * 100;
-
-            let scaledScore = (percentage / 100) * 10;
-
-            scaledScore = Math.round(scaledScore * 100) / 100;
+            let scaledScore = Math.round((score / 15) * 10);
 
             localStorage.setItem('userAnswers', JSON.stringify($scope.userAnswers));
             localStorage.setItem('marks', scaledScore);

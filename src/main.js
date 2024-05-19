@@ -11,112 +11,116 @@ import feedbackController from "./controllers/clients/FeedbackController.js";
 import profileController from "./controllers/clients/ProfileController.js";
 import forrgotPswController from "./controllers/clients/ForgotPswController.js";
 import transcriptController from "./controllers/clients/TranscriptController.js";
+import searchController from "./controllers/clients/searchController.js";
 
 const app = angular.module('app', ['ngRoute']);
-app.controller('main-controller', ($scope, $http, $window) => {
+app.controller('main-controller', async ($scope, $http, $window) => {
+    $scope.search = '';
     $http.get("../db/Categories.js").then((response) => {
         $scope.categories = response.data;
     });
 
-    $scope.userId = localStorage.getItem('userId');
+    $scope.submitForm = () => {
+        $window.location.href = `#!tim-kiem/${$scope.search}`;
+    }
 
-        const checkFullname = () => {
-            const fullname = localStorage.getItem('fullname');
-            $scope.checkFullname = !!fullname; 
-        };
+    const checkFullname = () => {
+        const fullname = localStorage.getItem('fullname');
+        $scope.checkFullname = !!fullname; 
+    };
     
-        $scope.$watch(() => localStorage.getItem('fullname'), () => {
-            checkFullname();
-        });
-
-        $scope.btnWarning = () => {
-            Swal.fire({
-                title: "Cảnh báo?",
-                text: "Bạn cần phải đăng nhập mới có thể làm quiz!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Đăng nhập",
-                cancelButtonText: "Hủy bỏ",
-                showClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeInDown
-                        animate__faster
-                    `
-                },
-                hideClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeOutUp
-                        animate__faster
-                    `
-                }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $window.location.href = '#!dang-nhap';
-                    }
-                });
-        }
-
-        $scope.confirm = (courseId) => {
-            Swal.fire({
-                title: "Xác nhận?",
-                text: "Bạn sẽ bắt đầu làm Quiz ngay",
-                icon: "info",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Ok",
-                cancelButtonText: "Hủy bỏ",
-                showClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeInDown
-                        animate__faster
-                    `
-                },
-                hideClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeOutUp
-                        animate__faster
-                    `
-                }
+    $scope.$watch(() => localStorage.getItem('fullname'), () => {
+        $scope.userId = localStorage.getItem('userId');
+        checkFullname();
+    });
+    $scope.btnWarning = () => {
+        Swal.fire({
+            title: "Cảnh báo?",
+            text: "Bạn cần phải đăng nhập mới có thể làm quiz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Đăng nhập",
+            cancelButtonText: "Hủy bỏ",
+            showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInDown
+                    animate__faster
+                `
+            },
+            hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutUp
+                    animate__faster
+                `
+            }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $window.location.href = `#!he-thong-quiz/${courseId}`;
+                    $window.location.href = '#!dang-nhap';
                 }
             });
-        }
+    }
+    $scope.confirm = (courseId) => {
+        Swal.fire({
+            title: "Xác nhận?",
+            text: "Bạn sẽ bắt đầu làm Quiz ngay",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok",
+            cancelButtonText: "Hủy bỏ",
+            showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInDown
+                    animate__faster
+                `
+            },
+            hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutUp
+                    animate__faster
+                `
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $window.location.href = `#!he-thong-quiz/${courseId}`;
+            }
+        });
+    }
     
-        $scope.logout = () => {
-            localStorage.removeItem('fullname');
-            localStorage.removeItem('userId');
-            Swal.fire({
-                title: 'Thành công!',
-                text: 'Đã đăng xuất tài khoản!',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 2000,
-                showClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeInDown
-                        animate__faster
-                    `
-                },
-                hideClass: {
-                    popup: `
-                        animate__animated
-                        animate__fadeOutUp
-                        animate__faster
-                    `
-                }
-            });
-            $window.location.href = '#!dang-nhap';   
-        }
+    $scope.logout = () => {
+        localStorage.removeItem('fullname');
+        localStorage.removeItem('userId');
+        Swal.fire({
+            title: 'Thành công!',
+            text: 'Đã đăng xuất tài khoản!',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000,
+            showClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeInDown
+                    animate__faster
+                `
+            },
+            hideClass: {
+                popup: `
+                    animate__animated
+                    animate__fadeOutUp
+                    animate__faster
+                `
+            }
+        });
+        $window.location.href = '#!dang-nhap';   
+    }
+
 })
 
 route(app);
@@ -134,6 +138,7 @@ const controllers = (app) => {
     profileController(app);
     forrgotPswController(app);
     transcriptController(app);
+    searchController(app);
 }
 
 controllers(app);

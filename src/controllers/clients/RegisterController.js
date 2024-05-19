@@ -1,53 +1,37 @@
-const axios_ins = axios.create({
-    baseURL: "https://easy-quiz-f2641-default-rtdb.firebaseio.com"
-});
+const registerController = (app) => {
+    app.controller('RegisterController', ($scope, $window, $http) => {
+        $scope.userName = '';
+        $scope.email = '';
+        $scope.password = '';
+        $scope.confirmPsw = '';
 
-async function checkEmail(email, fullname, password) {
-    const getUser = await axios_ins.get('/users.json');
-    const userData = getUser.data;
-    let isCheckMail = true;
-    for(const key in userData) {
-        if (Object.hasOwnProperty.call(userData, key)) {
-            const users = userData[key];
-
-            if (users.email === email) {
-                isCheckMail = false;
-            }
-        }
-    }
-
-    if (!isCheckMail) {
-        Swal.fire({
-            title: "Cảnh báo!",
-            text: "Tài khoản này đã tồn tại",
-            icon: "info",
-            timer: 2000,
-            showClass: {
-                popup: `
-                    animate__animated
-                    animate__fadeInDown
-                    animate__faster
-                `
-            },
-                hideClass: {
+        function messageWarning(text) {
+            Swal.fire({
+                title: "Cảnh báo!",
+                text: text,
+                icon: "info",
+                timer: 2000,
+                showClass: {
                     popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
+                        animate__animated
+                        animate__fadeInDown
+                        animate__faster
                     `
-            }
-        })
-    }else {
-        const user = {email, password, fullname};
-        const response = await axios_ins.post('/users.json', user);
+                },
+                    hideClass: {
+                        popup: `
+                        animate__animated
+                        animate__fadeOutDown
+                        animate__faster
+                        `
+                }
+            })
+        }
 
-        if (response.status === 200) {
-            const userId = response.data.name;
-
-            await axios_ins.patch(`/users/${userId}.json`, {id: userId});
+        function messageSuccess(text) {
             Swal.fire({
                 title: 'Thành công!',
-                text: 'Đăng ký tài khoản thành công!',
+                text: text,
                 icon: 'success',
                 showConfirmButton: false,
                 timer: 1200,
@@ -67,22 +51,44 @@ async function checkEmail(email, fullname, password) {
                 }
             });
         }
-    }
 
-    return isCheckMail;
-}
+        const createUser = (email, userName, password) => {
+            $http.post('https://easy-quiz-f2641-default-rtdb.firebaseio.com/users.json', {email, userName, password})
+            .then((response) => {
+                if (response.status == 200) {
+                    $http.patch(`https://easy-quiz-f2641-default-rtdb.firebaseio.com/users/${response.data.name}.json`, {id: response.data.name})
+                    .then((response) => {
+                        if (response.status == 200) {
+                            messageSuccess('Đăng ký tài khoản thành công');
+                            $window.location.href = '#!dang-nhap';
+                        }
+                    });
+                }
+            });
+        }
 
-const registerController = (app) => {
-    app.controller('RegisterController', ($scope, $window) => {
-        $scope.userName = '';
-        $scope.email = '';
-        $scope.password = '';
-        $scope.confirmPsw = '';
+        const checkMail = (email, userName, password) => {
+            $http.get('https://easy-quiz-f2641-default-rtdb.firebaseio.com/users.json')
+            .then(response => {
+                let isCheckMail = true;
+                const users = response.data;
+                for (let key in users) {
+                    if (users[key].email == email) {
+                        isCheckMail = false;
+                    }
+                }
+                if (!isCheckMail) {
+                    messageWarning('Tài khoản này đã tồn tại');
+                }else {
+                    createUser(email, userName, password);
+                    return true;
+                }
+                return isCheckMail;
+            })
+        }
 
-        $scope.submitForm = async () => {
-            if( await checkEmail($scope.email, $scope.userName, $scope.password)) {
-                $window.location.href = '#!dang-nhap';
-            }
+        $scope.submitForm = () => {
+            checkMail($scope.email, $scope.userName, $scope.password)
         };
     });
 }
